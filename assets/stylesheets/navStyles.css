@@ -56,7 +56,6 @@ nav svg{
 
 .open-sidebar-button, .close-sidebar-button{
     display: none;
-    padding: 0 20px;
 }
 
 @media(max-width: 660px){
@@ -76,7 +75,7 @@ nav svg{
     }
 
     nav a{
-        padding-top: 10px;
+        padding-top: 40px;
         box-sizing: border-box;
         height: auto;
         width: 100%;
