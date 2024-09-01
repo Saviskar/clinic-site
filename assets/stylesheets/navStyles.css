@@ -13,6 +13,11 @@ html{
     font-size: 12pt;
 }
 
+.logo{
+    height: auto;
+    width: 50px;
+}
+
 nav{
     height: 60px;
     background-color: var(--nav-color);
