@@ -1,3 +1,57 @@
+body{
+    height: 100vh;
+}
+
 .hero-image{
+    background-image: linear-gradient(
+        rgba(0,0,0,0.5),
+        rgba(0,0,0,0.5)),
+        url("../images/hero-image-homepage.webp");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.hero-image .hero-text{
+    color: #fff;
+    text-align: center;
+    max-width: 70%;
+}
+
+.hero-image .hero-text h1{
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.hero-image .hero-text p{
+    font-size: 20px;
+    margin: 20px;
+}
+
+.hero-image .hero-btn{
+    text-decoration: none;
+    color: #fff;
+    background-color: #000;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.hero-image .hero-btn:hover{
+    background: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+@media(max-width: 660px) {
     
 }
