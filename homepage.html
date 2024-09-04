@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="./assets/stylesheets/commonStyles.css">
-    <link rel="stylesheet" href="./assets/stylesheets/navStyles.css">
-    <link rel="stylesheet" href="./assets/stylesheets/heroImageStyles.css">
-    <link rel="stylesheet" href="./assets/stylesheets/contentStyles.css">
-    <link rel="stylesheet" href="./assets/stylesheets/additionalServicesStyles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- google icons -->
+    <link rel="stylesheet" href="./assets/stylesheets/commonStyles.css"> <!-- common styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/navStyles.css"> <!-- navbar styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/heroImageStyles.css"> <!-- hero styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/contentStyles.css"> <!-- main content styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/additionalServicesStyles.css"> <!-- additional services styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/homeVideoStyles.css"> <!-- iframe video styles -->
 </head>
 <body>
     <header>
@@ -37,118 +39,141 @@
         </nav>
     </header>
     <main>
-        <div class="hero-image">
-            <div class="hero-text">
+        <section class="hero-section">
+            <div class="hero-image">
+                <img src="./assets/images/hero-image-homepage.webp" alt="Hero Image" class="hero-background">
+                <div class="hero-text">
+                    <h1>Welcome to Meta Hospital</h1>
+                    <p>
+                        At Meta Hospital, we are dedicated to your health and wellbeing. Our team of experienced professionals is 
+                        here to offer the highest standard of medical care in a comfortable and supportive environment. Whether you 
+                        need routine check-ups or specialized treatments, we are committed to ensuring you receive the best care possible.
+                    </p>
+                    <p>Your Health, Our Priority</p>
+                    <a href="#" class="hero-btn">Read More</a>
+                </div>
+            </div>            
+        </section>
+
+        <section class="main-content-section">
+            <div class="content-container">
                 <h1>Welcome to Meta Hospital</h1>
                 <p>
-                    At Meta Hospital, we are dedicated to your health and wellbeing. Our team of experienced professionals is 
-                    here to offer the highest standard of medical care in a comfortable and supportive environment. Whether you 
-                    need routine check-ups or specialized treatments, we are committed to ensuring you receive the best care possible.
+                    Meta Hospital is committed to providing exceptional medical care to our community. Our hospital is equipped with state-of-the
+                    -art facilities and staffed by a team of highly skilled healthcare professionals dedicated to offering compassionate and 
+                    comprehensive care to every patient.From emergency services to specialized treatments, our goal is to ensure that you 
+                    receive the best care possible in a safe and comfortable environment. We believe in a patient-centered approach, where 
+                    your health, comfort, and well-being are our top priorities. Whether you are here for a routine check-up or a 
+                    specialized procedure, you can trust us to deliver the highest standard of care with kindness and expertise.
                 </p>
-                <p>Your Health, Our Priority</p>
-                <a href="#" class="hero-btn">Hire Me</a>
+                <p>
+                    At Meta Hospital, we prioritize patient-centered care and strive to build a trusting relationship with each of our patients.
+                    Our multidisciplinary team of healthcare professionals collaborates to provide personalized treatment plans tailored to 
+                    each individual’s unique needs. We are committed to fostering a healing environment where patients feel supported and 
+                    empowered throughout their healthcare journey. From preventive care and routine screenings to advanced diagnostics and 
+                    specialized treatments, we aim to offer a comprehensive range of services designed to promote long-term health and well-being.
+                </p>
+                <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
             </div>
-        </div>
+    
+            <div class="content-container">
+                <h1>Emergency Care Services</h1>
+                <p>
+                    At Meta Hospital, our Emergency Department is open 24/7, providing immediate care for urgent medical conditions. Our team 
+                    of experienced emergency physicians, nurses, and support staff is dedicated to delivering prompt and efficient treatment 
+                    for a wide range of medical emergencies, from minor injuries to life-threatening conditions. With state-of-the-art 
+                    facilities and advanced diagnostic tools, we are equipped to handle all types of emergencies with precision and care.
+                </p>
+                <p>
+                    Our Emergency Care unit is equipped with cutting-edge technology and staffed by a highly trained team, ready to respond 
+                    to any medical situation. From cardiac emergencies and trauma care to pediatric emergencies and stroke treatment, we 
+                    provide rapid assessment and intervention to ensure the best possible outcomes. Our commitment to excellence extends beyond 
+                    immediate care; we also focus on seamless coordination with other departments to ensure comprehensive follow-up and 
+                    rehabilitation support. At Meta Hospital, your safety and well-being are our top priorities, and we are here for you 
+                    whenever you need us, day or night.
+                </p>
+                <img src="./assets/images/emergency-services.webp" alt="Description of Image">
+            </div>
+    
+            <div class="content-container">
+                <h1>Surgical Services</h1>
+                <p>
+                    Our Surgical Services Department offers a comprehensive range of surgical procedures, from minimally invasive surgeries 
+                    to complex operations. Our team of highly skilled surgeons, anesthesiologists, and surgical nurses work collaboratively 
+                    to ensure each patient receives the best possible care. We use the latest technology and techniques to minimize recovery 
+                    time and enhance patient outcomes, ensuring a safe and comfortable surgical experience.
+                </p>
+                <p>
+                    At Meta Hospital, our surgical team is dedicated to providing the highest quality care, using the latest advancements in
+                     medical technology and surgical techniques. We specialize in a wide range of surgical procedures, including general 
+                     surgery, orthopedic surgery, cardiovascular surgery, and more. Our operating suites are equipped with state-of-the-art 
+                     equipment to ensure precision and safety during every procedure. We also offer comprehensive preoperative and postoperative 
+                     care, ensuring that each patient receives personalized attention and support throughout their surgical journey. From 
+                     initial consultation to recovery, our team is here to provide expert care every step of the way.
+                </p>
+                <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
+            </div>
+    
+            <div class="content-container">
+                <h1> Maternity and Neonatal Care Services</h1>
+                <p>
+                    Meta Hospital's Maternity and Neonatal Care Unit provides comprehensive care for expectant mothers and newborns. Our team 
+                    of obstetricians, pediatricians, and nurses is committed to supporting families through every stage of pregnancy, 
+                    childbirth, and postpartum recovery. With comfortable birthing suites, advanced neonatal facilities, and personalized 
+                    care plans, we strive to make every birth experience safe, joyful, and memorable.
+                </p>
+                <p>
+                    At Meta Hospital, we understand that maternity and neonatal care is a critical and deeply personal experience. Our dedicated 
+                    team of obstetricians, midwives, and neonatal specialists provides compassionate and expert care to ensure a smooth and 
+                    joyful journey for expectant families. Our maternity unit offers a range of services, from prenatal education and 
+                    personalized birthing plans to postnatal support and lactation counseling. We also have a specialized neonatal care unit 
+                    equipped to handle any newborn needs, from routine check-ups to advanced care for premature or ill infants. Our goal is to 
+                    create a supportive and nurturing environment where families can focus on welcoming their new addition with confidence and 
+                    peace of mind.
+                </p>
+                <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
+            </div>
+    
+            <section class="additional-services-section">
+                <div class="additional-services-container">
+                    <h2>Additional Services We Offer</h2>
+    
+                <ul class="bullet-list">
+                    <li>24/7 Pharmacy Services</li>
+                    <li>Physical Therapy and Rehabilitation</li>
+                    <li>Diagnostic Imaging and Radiology</li>
+                    <li>Patient Education Programs</li>
+                    <li>Outpatient Specialty Clinics</li>
+                </ul>
+    
+                <ol class="numbered-list">
+                    <li>Free Wi-Fi throughout the hospital</li>
+                    <li>Complimentary parking for visitors</li>
+                    <li>On-site cafeteria and dining options</li>
+                    <li>Language translation services</li>
+                    <li>Visitor information and assistance desk</li>
+                </ol>
+                </div>
+            </section>
+        </section>
 
-        <div class="content-container">
-            <h1>Welcome to Meta Hospital</h1>
-            <p>
-                Meta Hospital is committed to providing exceptional medical care to our community. Our hospital is equipped with state-of-the
-                -art facilities and staffed by a team of highly skilled healthcare professionals dedicated to offering compassionate and 
-                comprehensive care to every patient.From emergency services to specialized treatments, our goal is to ensure that you 
-                receive the best care possible in a safe and comfortable environment. We believe in a patient-centered approach, where 
-                your health, comfort, and well-being are our top priorities. Whether you are here for a routine check-up or a 
-                specialized procedure, you can trust us to deliver the highest standard of care with kindness and expertise.
-            </p>
-            <p>
-                At Meta Hospital, we prioritize patient-centered care and strive to build a trusting relationship with each of our patients.
-                Our multidisciplinary team of healthcare professionals collaborates to provide personalized treatment plans tailored to 
-                each individual’s unique needs. We are committed to fostering a healing environment where patients feel supported and 
-                empowered throughout their healthcare journey. From preventive care and routine screenings to advanced diagnostics and 
-                specialized treatments, we aim to offer a comprehensive range of services designed to promote long-term health and well-being.
-            </p>
-            <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
-        </div>
-
-        <div class="content-container">
-            <h1>Emergency Care Services</h1>
-            <p>
-                At Meta Hospital, our Emergency Department is open 24/7, providing immediate care for urgent medical conditions. Our team 
-                of experienced emergency physicians, nurses, and support staff is dedicated to delivering prompt and efficient treatment 
-                for a wide range of medical emergencies, from minor injuries to life-threatening conditions. With state-of-the-art 
-                facilities and advanced diagnostic tools, we are equipped to handle all types of emergencies with precision and care.
-            </p>
-            <p>
-                Our Emergency Care unit is equipped with cutting-edge technology and staffed by a highly trained team, ready to respond 
-                to any medical situation. From cardiac emergencies and trauma care to pediatric emergencies and stroke treatment, we 
-                provide rapid assessment and intervention to ensure the best possible outcomes. Our commitment to excellence extends beyond 
-                immediate care; we also focus on seamless coordination with other departments to ensure comprehensive follow-up and 
-                rehabilitation support. At Meta Hospital, your safety and well-being are our top priorities, and we are here for you 
-                whenever you need us, day or night.
-            </p>
-            <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
-        </div>
-
-        <div class="content-container">
-            <h1>Surgical Services</h1>
-            <p>
-                Our Surgical Services Department offers a comprehensive range of surgical procedures, from minimally invasive surgeries 
-                to complex operations. Our team of highly skilled surgeons, anesthesiologists, and surgical nurses work collaboratively 
-                to ensure each patient receives the best possible care. We use the latest technology and techniques to minimize recovery 
-                time and enhance patient outcomes, ensuring a safe and comfortable surgical experience.
-            </p>
-            <p>
-                At Meta Hospital, our surgical team is dedicated to providing the highest quality care, using the latest advancements in
-                 medical technology and surgical techniques. We specialize in a wide range of surgical procedures, including general 
-                 surgery, orthopedic surgery, cardiovascular surgery, and more. Our operating suites are equipped with state-of-the-art 
-                 equipment to ensure precision and safety during every procedure. We also offer comprehensive preoperative and postoperative 
-                 care, ensuring that each patient receives personalized attention and support throughout their surgical journey. From 
-                 initial consultation to recovery, our team is here to provide expert care every step of the way.
-            </p>
-            <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
-        </div>
-
-        <div class="content-container">
-            <h1> Maternity and Neonatal Care Services</h1>
-            <p>
-                Meta Hospital's Maternity and Neonatal Care Unit provides comprehensive care for expectant mothers and newborns. Our team 
-                of obstetricians, pediatricians, and nurses is committed to supporting families through every stage of pregnancy, 
-                childbirth, and postpartum recovery. With comfortable birthing suites, advanced neonatal facilities, and personalized 
-                care plans, we strive to make every birth experience safe, joyful, and memorable.
-            </p>
-            <p>
-                At Meta Hospital, we understand that maternity and neonatal care is a critical and deeply personal experience. Our dedicated 
-                team of obstetricians, midwives, and neonatal specialists provides compassionate and expert care to ensure a smooth and 
-                joyful journey for expectant families. Our maternity unit offers a range of services, from prenatal education and 
-                personalized birthing plans to postnatal support and lactation counseling. We also have a specialized neonatal care unit 
-                equipped to handle any newborn needs, from routine check-ups to advanced care for premature or ill infants. Our goal is to 
-                create a supportive and nurturing environment where families can focus on welcoming their new addition with confidence and 
-                peace of mind.
-            </p>
-            <img src="./assets/images/hospital-brief.webp" alt="Description of Image">
-        </div>
-
-        <section class="additional-services">
-            <div class="additional-services-container">
-                <h2>Additional Services We Offer</h2>
-
-            <ul class="bullet-list">
-                <li>24/7 Pharmacy Services</li>
-                <li>Physical Therapy and Rehabilitation</li>
-                <li>Diagnostic Imaging and Radiology</li>
-                <li>Patient Education Programs</li>
-                <li>Outpatient Specialty Clinics</li>
-            </ul>
-
-            <ol class="numbered-list">
-                <li>Free Wi-Fi throughout the hospital</li>
-                <li>Complimentary parking for visitors</li>
-                <li>On-site cafeteria and dining options</li>
-                <li>Language translation services</li>
-                <li>Visitor information and assistance desk</li>
-            </ol>
+        <section class="home-video-section">
+            <div class="home-video-container">
+                <iframe 
+                width="1058" 
+                height="595" 
+                src="https://www.youtube.com/embed/qY_6cWYxeAI" 
+                title="Apollo Hospitals | Happy Doctor&#39;s Day!" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
             </div>
         </section>
     </main>
+
+    <footer>
+
+    </footer>
 </body>
 </html>

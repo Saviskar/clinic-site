@@ -1,38 +1,45 @@
-body{
+body {
     height: 100vh;
 }
 
-.hero-image{
-    background-image: linear-gradient(
-        rgba(0,0,0,0.5),
-        rgba(0,0,0,0.5)),
-        url("../images/hero-image-homepage.webp");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 80vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.hero-image {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure the image stays within the container */
 }
 
-.hero-image .hero-text{
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place the image behind the text */
+    filter: brightness(50%); /* Darkens the image to make text more readable */
+}
+
+.hero-image .hero-text {
     color: #fff;
     text-align: center;
     max-width: 70%;
+    z-index: 1; /* Ensure text stays above the image */
 }
 
-.hero-image .hero-text h1{
+.hero-image .hero-text h1 {
     font-size: 3rem;
     font-weight: bolder;
 }
 
-.hero-image .hero-text p{
+.hero-image .hero-text p {
     font-size: 20px;
     margin: 20px;
 }
 
-.hero-image .hero-btn{
+.hero-image .hero-btn {
     text-decoration: none;
     color: #fff;
     background-color: #000;
@@ -46,32 +53,32 @@ body{
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
-.hero-image .hero-btn:hover{
+.hero-image .hero-btn:hover {
     background: #fff;
     color: #000;
     border-color: #000;
 }
 
-@media(max-width: 660px) {
+@media (max-width: 660px) {
     .hero-image {
-        height: 60vh; 
+        height: 60vh;
     }
 
     .hero-image .hero-text {
-        max-width: 90%; 
+        max-width: 90%;
     }
 
     .hero-image .hero-text h1 {
-        font-size: 2rem; 
+        font-size: 2rem;
     }
 
     .hero-image .hero-text p {
-        font-size: 1.3rem; 
-        margin: 10px 0; 
+        font-size: 1.3rem;
+        margin: 10px 0;
     }
 
     .hero-image .hero-btn {
-        padding: 8px 16px; 
+        padding: 8px 16px;
         font-size: 14px;
     }
 }
