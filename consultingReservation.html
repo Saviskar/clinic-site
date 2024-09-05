@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulting Reservation</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- google icons -->
+    <link rel="stylesheet" href="./assets/stylesheets/commonStyles.css"> <!-- common styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/navStyles.css"> <!-- navbar styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/heroImageStyles.css"> <!-- hero styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/contentStyles.css"> <!-- main content styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/formStyles.css"> <!-- form styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/fullWidthButtonStyles.css"> <!-- full width button styles -->
 </head>
 <body>
     <header>
@@ -31,6 +38,68 @@
             </div>
         </nav>
     </header>
-    <h1>Consulting Reservation</h1>
+    
+    <main>
+        <section class="main-content-section">
+            <div class="content-container">
+                <h1>Reservation Form</h1>
+                <form class="custom-form">
+                    <!-- Name (Full width) -->
+                    <div class="form-group full-width">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                
+                    <!-- Address (Full width) -->
+                    <div class="form-group full-width">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                
+                    <!-- Date of Birth and Gender (Side by side) -->
+                    <div class="form-group half-width">
+                        <label for="dob">Date of Birth:</label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                
+                    <!-- Phone Number and Doctor (Side by side) -->
+                    <div class="form-group half-width">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="doctor">Doctor:</label>
+                        <input type="text" id="doctor" name="doctor" required>
+                    </div>
+                
+                    <!-- Time and Preferred Mode (Side by side) -->
+                    <div class="form-group half-width">
+                        <label for="time">Time:</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="mode">Preferred Mode:</label>
+                        <select id="mode" name="mode" required>
+                            <option value="online">Online</option>
+                            <option value="offline">Offline</option>
+                        </select>
+                    </div>
+                
+                    <!-- Submit Button -->
+                    <div class="form-group full-width">
+                        <button type="submit" class="reusable-btn">Submit</button>
+                    </div>
+                </form>                
+            </div>
+        </section>
+    </main>
 </body>
 </html>

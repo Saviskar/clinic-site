@@ -1,0 +1,56 @@
+/* Container for the custom form */
+.custom-form {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for each form group */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Input and select styling */
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Full width for name and address fields */
+.full-width {
+    width: 100%;
+}
+
+/* Half-width for side-by-side fields */
+.half-width {
+    width: calc(50% - 10px); /* Ensures proper spacing */
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+/* Ensure side-by-side fields are spaced apart */
+.half-width:first-child {
+    margin-right: 20px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 660px) {
+    .half-width {
+        width: 100%; /* Stack the fields */
+        margin-right: 0;
+    }
+}
