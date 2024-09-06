@@ -1,6 +1,6 @@
 /* Home Video Stylesheet */
 
-.home-video {
+.home-video-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,17 +8,18 @@
     background-color: #f4f4f4; /* Background color for the section */
 }
 
+/* Container to center the video and maintain aspect ratio */
 .home-video-container {
-    position: relative;
     width: 100%;
-    max-width: 1060px; /* Adjust as needed */
+    max-width: 1058px; /* Adjust the max width to keep it responsive */
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    position: relative;
     height: 0;
-    overflow: hidden;
-    border-radius: 8px; /* Optional: for rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional: for shadow effect */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Video styling to fit container */
 .home-video-container iframe {
     position: absolute;
     top: 0;
@@ -28,10 +29,10 @@
     border: 0;
 }
 
-/* Responsive Styles */
+/* Responsive styling for smaller screens */
 @media (max-width: 660px) {
     .home-video-container {
-        max-width: 100%; /* Ensure it takes full width on smaller screens */
-        padding-bottom: 56.25%; /* Maintain aspect ratio */
+        max-width: 100%; /* Full width on smaller screens */
+        padding-bottom: 56.25%; /* Keep the aspect ratio intact */
     }
 }
