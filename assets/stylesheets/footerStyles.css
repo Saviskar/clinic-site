@@ -1,0 +1,58 @@
+/* Footer general styling */
+footer {
+    background-color: #0f1016;
+    padding: 20px;
+    color: #fff;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+.footer-logo img {
+    max-width: 100px;
+}
+
+.footer-social-media {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons i {
+    font-size: 36px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.footer-contact p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.footer-contact strong {
+    margin-right: 10px;
+}
+
+/* Media Query for devices with a max width of 768px */
+@media (max-width: 660px) {
+    .footer-container {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; /* Center align text */
+    }
+
+    .footer-logo,
+    .footer-social-media,
+    .footer-contact {
+        margin-bottom: 20px; /* Add spacing between sections */
+    }
+}
