@@ -1,0 +1,72 @@
+.image-gallery {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image-grid img {
+    flex: 1 1 calc(33.333% - 10px); /* 3 images per row with spacing */
+    max-width: calc(33.333% - 10px);
+    margin-bottom: 15px;
+    height: auto;
+    border-radius: 6px;
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+.registration-btn {
+    text-decoration: none;
+    color: #fff;
+    background-color: #000;
+    padding: 10px;
+    width: 100%;
+    max-width: 1000px; /* Set a max-width */
+    text-align: center; /* Center the text */
+    margin: 20px auto; /* Center the button and add margin to the top */
+    display: block; /* Block-level element */
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.registration-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .registration-btn {
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-btn {
+        padding: 10px 15px; /* Further adjustment for very small screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .image-grid img {
+        flex: 1 1 calc(50% - 10px); /* 2 images per row */
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .image-grid img {
+        flex: 1 1 100%; /* 1 image per row */
+        max-width: 100%;
+    }
+}
