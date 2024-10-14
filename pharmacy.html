@@ -74,7 +74,42 @@
                     </div>
                     <div class="form-group half-width">
                         <label for="medicine">Medicine Name:</label>
-                        <input type="text" id="medicine" name="medicine" required>
+                        <select name="medicine-name" id="medicine">
+                            <option value="0">Select Medicine:</option>
+                            <optgroup label="Analgesics" data-max-options="6">
+                                <option value="Acetaminophen">Acetaminophen</option>
+                                <option value="Ibuprofen">Ibuprofen</option>
+                                <option value="Aspirin">Aspirin</option>
+                                <option value="Naproxen">Naproxen</option>
+                                <option value="Tramadol">Tramadol</option>
+                                <option value="Morphine">Morphine</option>
+                            <optgroup label="Antibiotics" data-max-options="6">
+                                <option value="Amoxicillin">Amoxicillin</option>
+                                <option value="Ciprofloxacin">Ciprofloxacin</option>
+                                <option value="Azithromycin">Azithromycin</option>
+                                <option value="Doxycycline">Doxycycline</option>
+                                <option value="Cephalexin">Cephalexin</option>
+                                <option value="Metronidazole">Metronidazole</option>
+                            <optgroup label="Antidepressants" data-max-options="6">
+                                <option value="Fluoxetine">Fluoxetine</option>
+                                <option value="Sertraline">Sertraline</option>
+                                <option value="Citalopram">Citalopram</option>
+                                <option value="Escitalopram">Escitalopram</option>
+                                <option value="Venlafaxine">Venlafaxine</option>
+                                <option value="Amitriptyline">Amitriptyline</option>
+                            <optgroup label="Antihistamines" data-max-options="4">
+                                <option value="Cetirizine">Cetirizine </option>
+                                <option value="Loratadine">Loratadine</option>
+                                <option value="Diphenhydramine">Diphenhydramine</option>
+                                <option value="Fexofenadine">Fexofenadine</option>
+                            <optgroup label="Antihypertensives" data-max-options="4">
+                                <option value="Amlodipine">Amlodipine</option>
+                                <option value="Lisinopril">Lisinopril</option>
+                                <option value="Losartan">Losartan</option>
+                                <option value="Metoprolol">Metoprolol</option>
+                                <option value="Atenolol">Atenolol</option>
+                                <option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+                        </select>
                     </div>
                 
                     <!-- Quantity and Payment Method (Side by side) -->
