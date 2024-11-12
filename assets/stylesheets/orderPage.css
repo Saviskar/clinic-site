@@ -1,0 +1,63 @@
+.order-page-container {
+  padding: 4em;
+}
+
+/* Container styling for the cards */
+.medicine-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+/* Individual card styling */
+.medicine-card {
+  border: 1px solid #d3d3d3; /* Subtle border for cards */
+  border-radius: 4px; /* Consistent rounding */
+  padding: 12px; /* Consistent padding */
+  width: calc(100% / 6 - 16px); /* 6 cards per row with a margin adjustment */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  background-color: #f9f9f9; /* Light background color for distinction */
+  text-align: center;
+}
+
+/* Heading and text styling */
+.medicine-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px; /* Consistent font size */
+}
+
+/* Price text */
+.medicine-price {
+  margin: 4px 0 12px;
+  font-weight: bold;
+}
+
+/* Button styling */
+.add-to-cart {
+  padding: 8px 12px;
+  background-color: #007bff; /* Primary color (adjust as necessary) */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3; /* Hover effect */
+}
+
+/* Counter display */
+.cart-counter {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #333;
+}
+
+.title {
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 1.5em;
+}

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="./assets/stylesheets/commonStyles.css" />
+    <!-- common styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/navStyles.css" />
+    <!-- navbar styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/heroImageStyles.css" />
+    <!-- hero styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/contentStyles.css" />
+    <link rel="stylesheet" href="./assets/stylesheets/orderPage.css" />
+    <!-- main content styles -->
+    <link
+      rel="stylesheet"
+      href="./assets/stylesheets/additionalServicesStyles.css"
+    />
+    <!-- additional services styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/homeVideoStyles.css" />
+    <!-- iframe video styles -->
+    <link rel="stylesheet" href="./assets/stylesheets/footerStyles.css" />
+    <!-- footer styles -->
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <header>
+      <!-- navigation bar -->
+      <nav>
+        <input type="checkbox" id="active-sidebar" />
+        <label for="active-sidebar" class="open-sidebar-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="32px"
+            viewBox="0 -960 960 960"
+            width="32px"
+            fill="#000000"
+          >
+            <path
+              d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+            />
+          </svg>
+        </label>
+
+        <div class="logo-container">
+          <a href="./index.html">
+            <img
+              src="./assets/images/logo.webp"
+              class="logo"
+              alt="Hospital Logo"
+            />
+          </a>
+        </div>
+
+        <div class="links-container">
+          <label for="active-sidebar" class="close-sidebar-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="#000000"
+            >
+              <path
+                d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+              />
+            </svg>
+          </label>
+
+          <a href="./index.html">Home</a>
+          <a href="./aboutus.html">About Us</a>
+          <a href="./services.html">Services</a>
+          <a href="./doctors.html">Doctors</a>
+          <a href="./consultingReservation.html">Consulting Reservation</a>
+          <a href="./pharmacy.html">Pharmacy</a>
+          <a href="./registration.html">Registration</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-image">
+          <img
+            src="./assets/images/doctors-hero.webp"
+            alt="Hero Image"
+            class="hero-background"
+          />
+          <div class="hero-text">
+            <h1>Order</h1>
+            <p>
+              At Meta Hospital, we are dedicated to your health and wellbeing.
+              Our team of experienced professionals is here to offer the highest
+              standard of medical care in a comfortable and supportive
+              environment. Whether you need routine check-ups or specialized
+              treatments, we are committed to ensuring you receive the best care
+              possible.
+            </p>
+            <p>Your Health, Our Priority</p>
+            <a href="#doctors" class="hero-btn">Read More</a>
+          </div>
+        </div>
+      </section>
+
+      <form action="#" method="POST" class="medicine-order-form">
+        <div class="order-page-container">
+          <h1 class="hero-text title">Analgesics</h1>
+          <div class="medicine-container">
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Aspirin" class="medicine-image" />
+              <h3>Aspirin</h3>
+              <p class="medicine-price">Price: LKR. 200</p>
+              <label for="aspirin-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="aspirin-quantity"
+                name="aspirin-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Ibuprofen" class="medicine-image" />
+              <h3>Ibuprofen</h3>
+              <p class="medicine-price">Price: LKR. 300</p>
+              <label for="ibuprofen-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="ibuprofen-quantity"
+                name="ibuprofen-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Acetaminophen"
+                class="medicine-image"
+              />
+              <h3>Acetaminophen</h3>
+              <p class="medicine-price">Price: LKR. 400</p>
+              <label for="acetaminophen-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="acetaminophen-quantity"
+                name="acetaminophen-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Naproxen" class="medicine-image" />
+              <h3>Naproxen</h3>
+              <p class="medicine-price">Price: LKR. 500</p>
+              <label for="naproxen-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="naproxen-quantity"
+                name="naproxen-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Morphine" class="medicine-image" />
+              <h3>Morphine</h3>
+              <p class="medicine-price">Price: LKR. 600</p>
+              <label for="morphine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="morphine-quantity"
+                name="morphine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Codeine" class="medicine-image" />
+              <h3>Codeine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="codeine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="codeine-quantity"
+                name="codeine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Antibiotics section -->
+          <h1 class="hero-text title">Antibiotics</h1>
+          <div class="medicine-container">
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Amoxicillin"
+                class="medicine-image"
+              />
+              <h3>Amoxicillin</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Amoxicillin-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Amoxicillin-quantity"
+                name="Amoxicillin-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Ciprofloxacin"
+                class="medicine-image"
+              />
+              <h3>Ciprofloxacin</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Ciprofloxacin-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Ciprofloxacin-quantity"
+                name="Ciprofloxacin-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Azithromycin"
+                class="medicine-image"
+              />
+              <h3>Azithromycin</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Azithromycin-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Azithromycin-quantity"
+                name="Azithromycin-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Doxycycline"
+                class="medicine-image"
+              />
+              <h3>Doxycycline</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Doxycycline-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Doxycycline-quantity"
+                name="Doxycycline-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Metronidazole"
+                class="medicine-image"
+              />
+              <h3>Metronidazole</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Metronidazole-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Metronidazole-quantity"
+                name="Metronidazole-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Cephalexin"
+                class="medicine-image"
+              />
+              <h3>Cephalexin</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Cephalexin-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Cephalexin-quantity"
+                name="Cephalexin-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Antidepressants section -->
+          <h1 class="hero-text title">Antidepressants</h1>
+          <div class="medicine-container">
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Fluoxetine"
+                class="medicine-image"
+              />
+              <h3>Fluoxetine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Fluoxetine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Fluoxetine-quantity"
+                name="Fluoxetine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Sertraline"
+                class="medicine-image"
+              />
+              <h3>Sertraline</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Sertraline-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Sertraline-quantity"
+                name="Sertraline-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Citalopram"
+                class="medicine-image"
+              />
+              <h3>Citalopram</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Citalopram-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Citalopram-quantity"
+                name="Citalopram-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Escitalopram"
+                class="medicine-image"
+              />
+              <h3>Escitalopram</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Escitalopram-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Escitalopram-quantity"
+                name="Escitalopram-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Amitriptyline"
+                class="medicine-image"
+              />
+              <h3>Amitriptyline</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Amitriptyline-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Amitriptyline-quantity"
+                name="Amitriptyline-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Duloxetine"
+                class="medicine-image"
+              />
+              <h3>Duloxetine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Duloxetine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Duloxetine-quantity"
+                name="Duloxetine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Antihistamines section -->
+          <h1 class="hero-text title">Antihistamines</h1>
+          <div class="medicine-container">
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Diphenhydramine"
+                class="medicine-image"
+              />
+              <h3>Diphenhydramine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Diphenhydramine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Diphenhydramine-quantity"
+                name="Diphenhydramine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Loratadine"
+                class="medicine-image"
+              />
+              <h3>Loratadine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Loratadine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Loratadine-quantity"
+                name="Loratadine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Cetirizine"
+                class="medicine-image"
+              />
+              <h3>Cetirizine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Cetirizine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Cetirizine-quantity"
+                name="Cetirizine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Fexofenadine"
+                class="medicine-image"
+              />
+              <h3>Fexofenadine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Fexofenadine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Fexofenadine-quantity"
+                name="Fexofenadine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Chlorpheniramine"
+                class="medicine-image"
+              />
+              <h3>Chlorpheniramine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Chlorpheniramine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Chlorpheniramine-quantity"
+                name="Chlorpheniramine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Promethazine"
+                class="medicine-image"
+              />
+              <h3>Promethazine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Promethazine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Promethazine-quantity"
+                name="Promethazine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+
+          <!-- Antihypertensives section -->
+          <h1 class="hero-text title">Antihypertensives</h1>
+          <div class="medicine-container">
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Lisinopril"
+                class="medicine-image"
+              />
+              <h3>Lisinopril</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Lisinopril-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Lisinopril-quantity"
+                name="Lisinopril-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Amlodipine"
+                class="medicine-image"
+              />
+              <h3>Amlodipine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Amlodipine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Amlodipine-quantity"
+                name="Amlodipine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Losartan" class="medicine-image" />
+              <h3>Losartan</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Losartan-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Losartan-quantity"
+                name="Losartan-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Hydrochlorothiazide"
+                class="medicine-image"
+              />
+              <h3>Hydrochlorothiazide</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Hydrochlorothiazide-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Hydrochlorothiazide-quantity"
+                name="Hydrochlorothiazide-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img
+                src="medicine1.jpg"
+                alt="Metoprolol"
+                class="medicine-image"
+              />
+              <h3>Metoprolol</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Metoprolol-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Metoprolol-quantity"
+                name="Metoprolol-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="medicine-card">
+              <img src="medicine1.jpg" alt="Clonidine" class="medicine-image" />
+              <h3>Clonidine</h3>
+              <p class="medicine-price">Price: LKR. 700</p>
+              <label for="Clonidine-quantity">Quantity:</label>
+              <input
+                type="number"
+                id="Clonidine-quantity"
+                name="Clonidine-quantity"
+                min="1"
+                value="0"
+              />
+              <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+          </div>
+
+          <div class="order-summary">
+            <button type="submit" class="submit-order">Submit Order</button>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <!-- footer section -->
+    <footer>
+      <div class="footer-container">
+        <!-- logo section -->
+        <div class="footer-logo">
+          <a href="./index.html">
+            <img src="./assets/images/logo.webp" alt="Hospital Logo" />
+          </a>
+        </div>
+
+        <!-- social media section -->
+        <div class="footer-social-media">
+          <h3>Social Media</h3>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.instagram.com/"
+              ><i class="fa-brands fa-square-instagram"></i
+            ></a>
+            <a href="https://www.youtube.com/"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- contact section -->
+        <div class="footer-contact">
+          <p><strong>Emergency</strong> 1111</p>
+          <p><strong>Hotline</strong> +94 123 4568</p>
+          <p><strong>Help Line</strong> +94 123 4569</p>
+        </div>
+      </div>
+
+      <!-- Doctors wallpaper (no date). https://wallpapercave.com/w/wp2789220.
+        A hospital room with a bed and a television (2023). https://wallpapers.com/background/hospital-room-background-1920-x-1080-pf2ibfw3vd3qri4r.html.
+        HD wallpaper: first responders, ambulance, emergency room, emergency medical technician | Wallpaper Flare (no date). https://www.wallpaperflare.com/first-responders-ambulance-emergency-room-emergency-medical-technician-wallpaper-gesbj.
+        General surgery (no date). https://www.facs.org/for-medical-professionals/education/programs/so-you-want-to-be-a-surgeon/section-iii-surgical-specialties/general-surgery/.
+        Maternity and Neonatal Safety Improvement Programme - Health Innovation South West (2023). https://healthinnovationsouthwest.com/programmes/patient-safety/maternity-and-neonatal-safety-improvement-programme/.
+        Apollo Hospitals (2019) Apollo Hospitals | Happy Doctor’s Day! https://www.youtube.com/watch?v=qY_6cWYxeAI.
+        Bilişim, M. (no date) Tinaztepe Üniversitesi - Operating Room Services. https://tinaztepe.edu.tr/en/bolum/operating-room-services.
+        (No date) Chatgpt. Available at: https://openai.com/chatgpt/ (Accessed: 12 September 2024). -->
+    </footer>
+  </body>
+</html>
