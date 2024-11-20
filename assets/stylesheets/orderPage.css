@@ -1,63 +1,173 @@
+/* Main container for the order page */
 .order-page-container {
-  padding: 4em;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Container styling for the cards */
-.medicine-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 16px;
-  margin: 16px 0;
-}
-
-/* Individual card styling */
-.medicine-card {
-  border: 1px solid #d3d3d3; /* Subtle border for cards */
-  border-radius: 4px; /* Consistent rounding */
-  padding: 12px; /* Consistent padding */
-  width: calc(100% / 6 - 16px); /* 6 cards per row with a margin adjustment */
-  box-sizing: border-box; /* Ensures padding doesn't affect width */
-  background-color: #f9f9f9; /* Light background color for distinction */
+/* Title styles for each section */
+.hero-text.title {
+  font-size: 2em;
   text-align: center;
-}
-
-/* Heading and text styling */
-.medicine-card h3 {
-  margin: 0 0 8px 0;
-  font-size: 16px; /* Consistent font size */
-}
-
-/* Price text */
-.medicine-price {
-  margin: 4px 0 12px;
-  font-weight: bold;
-}
-
-/* Button styling */
-.add-to-cart {
-  padding: 8px 12px;
-  background-color: #007bff; /* Primary color (adjust as necessary) */
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 8px;
-}
-
-.add-to-cart:hover {
-  background-color: #0056b3; /* Hover effect */
-}
-
-/* Counter display */
-.cart-counter {
-  font-size: 14px;
-  margin-top: 8px;
+  margin-bottom: 20px;
   color: #333;
 }
 
-.title {
+/* Container for the medicine cards */
+.medicine-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between; /* Distribute the cards evenly */
+}
+
+/* Each medicine card */
+.medicine-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
   text-align: center;
+  width: calc(
+    33.33% - 20px
+  ); /* 3 cards per row, with 20px space between them */
+  box-sizing: border-box; /* Ensures padding and border are included in width calculation */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Medicine image styling */
+.medicine-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* Medicine name and price styling */
+.medicine-card h3 {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.medicine-price {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+/* Quantity input */
+.medicine-card input[type="number"] {
+  width: 50px;
+  padding: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Add to Cart button */
+.add-to-cart {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.order-summary {
+  display: flex;
   justify-content: center;
-  padding-bottom: 1.5em;
+  align-items: center;
+  height: 100%; /* Adjust if needed for vertical centering */
+  padding-top: 25px;
+}
+
+.submit-order {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design: Stacks cards on small screens */
+@media (max-width: 768px) {
+  .medicine-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .medicine-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Table Styles */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #4caf50;
+  color: white;
+}
+
+td {
+  background-color: #fff;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Responsive Design for Tablets and Mobile */
+@media (max-width: 768px) {
+  th,
+  td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Stack table columns for smaller screens */
+  table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+.checkout-btn {
+  float: right;
+}
+
+.cart-container {
+  padding-bottom: 2em;
 }

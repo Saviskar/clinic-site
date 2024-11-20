@@ -105,12 +105,10 @@
           <div class="hero-text">
             <h1>Order</h1>
             <p>
-              At Meta Hospital, we are dedicated to your health and wellbeing.
-              Our team of experienced professionals is here to offer the highest
-              standard of medical care in a comfortable and supportive
-              environment. Whether you need routine check-ups or specialized
-              treatments, we are committed to ensuring you receive the best care
-              possible.
+              Welcome to our Order Page! Browse through our selection of
+              medicines, view detailed information, and easily add your desired
+              items to the cart. Customize quantities and calculate total costs
+              effortlessly for a smooth shopping experience
             </p>
             <p>Your Health, Our Priority</p>
             <a href="#doctors" class="hero-btn">Read More</a>
@@ -129,12 +127,14 @@
               <label for="aspirin-quantity">Quantity:</label>
               <input
                 type="number"
-                id="aspirin-quantity"
+                id="quantityId"
                 name="aspirin-quantity"
                 min="1"
                 value="0"
               />
-              <button type="button" class="add-to-cart">Add to Cart</button>
+              <button type="button" class="add-to-cart" id="demoBtn">
+                Add to Cart
+              </button>
             </div>
 
             <div class="medicine-card">
@@ -216,6 +216,8 @@
               <button type="button" class="add-to-cart">Add to Cart</button>
             </div>
           </div>
+
+          <br /><br />
 
           <!-- Antibiotics section -->
           <h1 class="hero-text title">Antibiotics</h1>
@@ -335,6 +337,8 @@
             </div>
           </div>
 
+          <br /><br />
+
           <!-- Antidepressants section -->
           <h1 class="hero-text title">Antidepressants</h1>
           <div class="medicine-container">
@@ -452,6 +456,8 @@
               <button type="button" class="add-to-cart">Add to Cart</button>
             </div>
           </div>
+
+          <br /><br />
 
           <!-- Antihistamines section -->
           <h1 class="hero-text title">Antihistamines</h1>
@@ -571,6 +577,8 @@
             </div>
           </div>
 
+          <br /><br />
+
           <!-- Antihypertensives section -->
           <h1 class="hero-text title">Antihypertensives</h1>
           <div class="medicine-container">
@@ -680,12 +688,36 @@
               <button type="button" class="add-to-cart">Add to Cart</button>
             </div>
           </div>
-
           <div class="order-summary">
             <button type="submit" class="submit-order">Submit Order</button>
           </div>
         </div>
       </form>
+
+      <div class="container cart-container">
+        <table id="medicine-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Medicine Name</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody id="cart-body">
+            <!-- Cart items will be dynamically added here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" style="text-align: right">Net Total</td>
+              <td id="net-total">$0</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <button class="submit-order checkout-btn">Checkout</button>
+      </div>
     </main>
 
     <!-- footer section -->
@@ -721,6 +753,8 @@
           <p><strong>Help Line</strong> +94 123 4569</p>
         </div>
       </div>
+
+      <script src="./assets/scripts/orderPage.js" defer></script>
 
       <!-- Doctors wallpaper (no date). https://wallpapercave.com/w/wp2789220.
         A hospital room with a bed and a television (2023). https://wallpapers.com/background/hospital-room-background-1920-x-1080-pf2ibfw3vd3qri4r.html.
