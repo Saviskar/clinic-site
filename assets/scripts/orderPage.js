@@ -6,86 +6,73 @@ async function fetchAndCreateEls() {
   try {
     const medicines = await fetchMedicines();
 
-    medicines.forEach((medicine) => {
-      // order page container element
-      const orderPageContainer = document.createElement("div");
-      orderPageContainer.classList.add("order-page-container");
+    // loop through each category in the JSON
+    for (const category in medicines) {
+      const categoryData = medicines[category];
 
-      // medicine category title element
-      const title = document.createElement("h1");
-      title.classList.add("hero-text", "title");
-      title.textContent = `${medicine.mainCategory}`;
+      // category title
+      const categoryTitle = document.createElement("h2");
+      categoryTitle.textContent = category; // For example: "Analgesics"
 
-      // medicine container
-      const medicineContainer = document.createElement("div");
-      medicineContainer.classList.add("medicine-container");
+      // create a container for each category
+      const categoryContainer = document.createElement("div");
+      categoryContainer.classList.add("category-container");
 
-      // medicine card
-      const medicineCard = document.createElement("div");
-      medicineCard.classList.add("medicine-card");
+      // loop through the medicines in the category
+      categoryData.forEach((medicine) => {
+        const medicineCard = document.createElement("div");
+        medicineCard.classList.add("medicine-card");
 
-      // image of the medicine
-      const image = document.createElement("img");
-      image.classList.add("medicine-image");
+        // image of the medicine
+        const image = document.createElement("img");
+        image.classList.add("medicine-image");
+        image.src = `${medicine.image}`;
 
-      // title of the medicine itself
-      const medicineItself = document.createElement("h3");
-      medicineItself.textContent = `${medicine.name}`;
+        // title of the medicine
+        const medicineTitle = document.createElement("h3");
+        medicineTitle.textContent = medicine.name;
 
-      // price displaying element
-      const price = document.createElement("p");
-      price.classList.add("medicine-price");
-      price.textContent = `Price: LKR. ${medicine.price}`;
+        // price of the medicine
+        const price = document.createElement("p");
+        price.classList.add("medicine-price");
+        price.textContent = `Price: LKR. ${medicine.price}`;
 
-      // quantity label element
-      const quantityLabel = document.createElement("label");
+        // quantity input (can be adjusted later)
+        const inputElement = document.createElement("input");
+        inputElement.type = "number";
+        inputElement.placeholder = "Enter quantity";
+        inputElement.min = "1";
 
-      // setting the label name
-      quantityLabel.textContent = `Quantity: ${medicine.quantity}`; // no attribute named quantity in json
+        // add to Cart button
+        const button = document.createElement("button");
+        button.classList.add("add-to-cart");
+        button.textContent = "Add to Cart";
 
-      // create input element
-      const inputElement = document.createElement("input");
-      inputElement.type = "number";
-      inputElement.placeholder = "Enter a number";
-      inputElement.min = "1";
-      inputElement.id = "numberInput";
+        // append everything to the card
+        medicineCard.appendChild(image);
+        medicineCard.appendChild(medicineTitle);
+        medicineCard.appendChild(price);
+        medicineCard.appendChild(inputElement);
+        medicineCard.appendChild(button);
 
-      // creating a button element
-      const button = document.createElement("button");
-      button.type = "button";
-      button.classList.add("add-to-cart");
-      button.textContent = `Add to Cart`;
+        // append the card to the category container
+        categoryContainer.appendChild(medicineCard);
+      });
 
-      // append all elements to the medicineCard
-      medicineCard.appendChild(image);
-      medicineCard.appendChild(medicineItself);
-      medicineCard.appendChild(price);
-      medicineCard.appendChild(quantityLabel);
-      medicineCard.appendChild(inputElement);
-      medicineCard.appendChild(button);
-
-      // append the medicineCard to the medicine container
-      medicineContainer.appendChild(medicineCard);
-
-      // append the title and medicine container to the order page container
-      orderPageContainer.appendChild(title);
-      orderPageContainer.appendChild(medicineContainer);
-
-      // append the orderPageContainer to the main container
-      mainMedicineContainer.appendChild(orderPageContainer);
-    });
+      // append the category title and its container to the main container
+      mainMedicineContainer.appendChild(categoryTitle);
+      mainMedicineContainer.appendChild(categoryContainer);
+    }
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 
+// fet
 async function fetchMedicines() {
   const response = await fetch("assets/json/medicines.json");
-  console.log(response);
   if (!response.ok) {
     throw new Error("Failed to fetch data.");
   }
   return response.json();
 }
-
-fetchMedicines();

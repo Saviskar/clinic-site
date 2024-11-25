@@ -1,23 +1,192 @@
-[
-  {
-    "id": 1,
-    "mainCategory": "Analgesics",
-    "name": "Aspirin",
-    "price": 50,
-    "image": "paracetamol.jpg"
-  },
-  {
-    "id": 2,
-    "mainCategory": "Analgesics",
-    "name": "Ibuprofen",
-    "price": 100,
-    "image": "ibuprofen.jpg"
-  },
-  {
-    "id": 3,
-    "mainCategory": "Analgesics",
-    "name": "Amoxicillin",
-    "price": 150,
-    "image": "amoxicillin.jpg"
-  }
-]
+{
+  "Analgesics": [
+    {
+      "id": 1,
+      "name": "Aspirin",
+      "price": 50,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAbz1sFEclmxsiDN4A1SzcHwaFbFd8EUC8_g&sR"
+    },
+    {
+      "id": 2,
+      "name": "Ibuprofen",
+      "price": 100,
+      "image": "https://www.medicinedirect.co.uk/media/catalog/product/cache/8bf3693ed458c257f5171ffffa4e8921/2/2/220-4956.jpg  "
+    },
+    {
+      "id": 3,
+      "name": "Paracetamol",
+      "price": 30,
+      "image": "https://tgp.com.ph/3647/paracetamol-500mg-tablet.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Naproxen",
+      "price": 120,
+      "image": "https://www.aflofarm.com.pl/media/__sized__/produkt_zdjecia/naproxen-aflofarm-zdjecie-glowne-M2-thumbnail-450x450.png"
+    },
+    {
+      "id": 5,
+      "name": "Diclofenac",
+      "price": 80,
+      "image": "https://spmc.gov.lk/resources/158/p.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Celecoxib",
+      "price": 150,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsfrEWoccdwxlBG9vW7jsIVPnliaD5WxfWaA&s"
+    }
+  ],
+  "Antibiotics": [
+    {
+      "id": 1,
+      "name": "Amoxicillin",
+      "price": 150,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi3-Rxv32TXa0IDdkSwYWp-OpPiEJiFEEm6g&s"
+    },
+    {
+      "id": 2,
+      "name": "Penicillin",
+      "price": 100,
+      "image": "https://5.imimg.com/data5/SELLER/Default/2023/5/309012570/PG/WY/XS/44476317/penicillin-g.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Azithromycin",
+      "price": 200,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ7oM0y9qQlEhLah3QWEGG5FyuaIorRSttCg&s"
+    },
+    {
+      "id": 4,
+      "name": "Ciprofloxacin",
+      "price": 250,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGsetPRGd2yrrF1WvDTwwO1dr97izoLMZMlA&s"
+    },
+    {
+      "id": 5,
+      "name": "Clindamycin",
+      "price": 180,
+      "image": "https://image.made-in-china.com/2f0j00QcSVyKTdkCUN/Antibiotic-Medicine-Clindamycin-Phosphate-Injection-600mg-4ml-Shinepharm.webp"
+    },
+    {
+      "id": 6,
+      "name": "Doxycycline",
+      "price": 120,
+      "image": "https://image.made-in-china.com/2f0j00bcwiqUThYSfE/Western-Medicine-Doxycycline-Hyclate-Capsule-100mg-with-GMP-Antibiotics.webp"
+    }
+  ],
+  "Antidepressants": [
+    {
+      "id": 1,
+      "name": "Fluoxetine",
+      "price": 180,
+      "image": "https://www.medchoicepharma.com/wp-content/uploads/2023/03/Prodin_4867-2.png"
+    },
+    {
+      "id": 2,
+      "name": "Sertraline",
+      "price": 220,
+      "image": "https://www.carelink.lk/wp-content/uploads/2022/11/Sertraline_Carelink.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Citalopram",
+      "price": 150,
+      "image": "https://evermorepharmacy.com/wp-content/uploads/2022/01/Citalopram1-scaled.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Escitalopram",
+      "price": 170,
+      "image": "https://www.kabirlifescience.com/wp-content/uploads/2021/06/ELPRAM-S-20.png"
+    },
+    {
+      "id": 5,
+      "name": "Bupropion",
+      "price": 250,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB-zz-RI0UJITOP3dw-zGi1f8qodiPUY3kwg&s"
+    },
+    {
+      "id": 6,
+      "name": "Duloxetine",
+      "price": 300,
+      "image": "https://sanamedpharma.com/en/wp-content/uploads/2021/11/Duloxetine-20-30.jpg"
+    }
+  ],
+  "Antihistamines": [
+    {
+      "id": 1,
+      "name": "Loratadine",
+      "price": 80,
+      "image": "https://www.carelink.lk/wp-content/uploads/2022/11/Loratadine_Carelink.lk_.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Cetirizine",
+      "price": 100,
+      "image": "https://www.carelink.lk/wp-content/uploads/2022/11/Cetirizine_Carelink.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Diphenhydramine",
+      "price": 60,
+      "image": "https://images.ctfassets.net/za5qny03n4xo/1eMhurqw0cnm90opZD7rUQ/b2ec4b89f1525c034d417d9756f3ec04/ah_side_0.png"
+    },
+    {
+      "id": 4,
+      "name": "Fexofenadine",
+      "price": 120,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZB19Xx8XGbiAvmmCDQY-Y3C4gRVZkcVawyw&s"
+    },
+    {
+      "id": 5,
+      "name": "Allegra",
+      "price": 120,
+      "image": "https://www.carelink.lk/wp-content/uploads/2022/11/Allegra_120mg_Carelink.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Claritin",
+      "price": 120,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_xBd1OCk1MKGNbLVINrn7W4dbTcZrJqZZqQ&s"
+    }
+  ],
+  "Antihypertensives": [
+    {
+      "id": 1,
+      "name": "Amlodipine",
+      "price": 120,
+      "image": "https://www.medicinedirect.co.uk/media/catalog/product/cache/8bf3693ed458c257f5171ffffa4e8921/n/0/n0ynxlt5aevpmxvvdzdn.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Lisinopril",
+      "price": 150,
+      "image": "https://api.evaro.com/wp-content/uploads/2021/10/Lisinopril-FRONT.png"
+    },
+    {
+      "id": 3,
+      "name": "Losartan",
+      "price": 180,
+      "image": "https://globelapharma.com/wp-content/uploads/2023/01/LOSARTAN.png"
+    },
+    {
+      "id": 4,
+      "name": "Metoprolol",
+      "price": 200,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgzVqk0KITgDs6ER1MzLmNuPBjKXiiLeNPuQ&s"
+    },
+    {
+      "id": 5,
+      "name": "Ramipril",
+      "price": 250,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrkkP2HRJ-U03v6zwqPry6ioqku1fHU0hkag&s"
+    },
+    {
+      "id": 6,
+      "name": "Valsartan",
+      "price": 220,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSftgzocHYs2uUtqaCIQsEoTyTtI2JaSNTWUA&s"
+    }
+  ]
+}
