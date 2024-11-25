@@ -1,139 +1,91 @@
-// initializing shopping card array
-let shoppingCart = [];
+document.addEventListener("DOMContentLoaded", fetchAndCreateEls);
 
-// Add an event listener to handle clicks on elements with "add-to-cart" class
-document.addEventListener("click", handleAddToCart);
+async function fetchAndCreateEls() {
+  const mainMedicineContainer = document.getElementById("medicine-order-form");
 
-function handleAddToCart(event) {
-  if (event.target && event.target.classList.contains("add-to-cart")) {
-    try {
-      addToCart(event);
-    } catch (error) {
-      console.error("Error adding item to cart:", error);
-    }
+  try {
+    const medicines = await fetchMedicines();
+
+    medicines.forEach((medicine) => {
+      // order page container element
+      const orderPageContainer = document.createElement("div");
+      orderPageContainer.classList.add("order-page-container");
+
+      // medicine category title element
+      const title = document.createElement("h1");
+      title.classList.add("hero-text", "title");
+      title.textContent = `${medicine.mainCategory}`;
+
+      // medicine container
+      const medicineContainer = document.createElement("div");
+      medicineContainer.classList.add("medicine-container");
+
+      // medicine card
+      const medicineCard = document.createElement("div");
+      medicineCard.classList.add("medicine-card");
+
+      // image of the medicine
+      const image = document.createElement("img");
+      image.classList.add("medicine-image");
+
+      // title of the medicine itself
+      const medicineItself = document.createElement("h3");
+      medicineItself.textContent = `${medicine.name}`;
+
+      // price displaying element
+      const price = document.createElement("p");
+      price.classList.add("medicine-price");
+      price.textContent = `Price: LKR. ${medicine.price}`;
+
+      // quantity label element
+      const quantityLabel = document.createElement("label");
+
+      // setting the label name
+      quantityLabel.textContent = `Quantity: ${medicine.quantity}`; // no attribute named quantity in json
+
+      // create input element
+      const inputElement = document.createElement("input");
+      inputElement.type = "number";
+      inputElement.placeholder = "Enter a number";
+      inputElement.min = "1";
+      inputElement.id = "numberInput";
+
+      // creating a button element
+      const button = document.createElement("button");
+      button.type = "button";
+      button.classList.add("add-to-cart");
+      button.textContent = `Add to Cart`;
+
+      // append all elements to the medicineCard
+      medicineCard.appendChild(image);
+      medicineCard.appendChild(medicineItself);
+      medicineCard.appendChild(price);
+      medicineCard.appendChild(quantityLabel);
+      medicineCard.appendChild(inputElement);
+      medicineCard.appendChild(button);
+
+      // append the medicineCard to the medicine container
+      medicineContainer.appendChild(medicineCard);
+
+      // append the title and medicine container to the order page container
+      orderPageContainer.appendChild(title);
+      orderPageContainer.appendChild(medicineContainer);
+
+      // append the orderPageContainer to the main container
+      mainMedicineContainer.appendChild(orderPageContainer);
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 
-// adds the selected medicine to tha cart and gets the data from the card
-function addToCart(event) {
-  const medicineCard = event.target.closest(".medicine-card");
-  if (!medicineCard) {
-    alert("Could not find the medicine card. Please try again.");
-    return;
+async function fetchMedicines() {
+  const response = await fetch("assets/json/medicines.json");
+  console.log(response);
+  if (!response.ok) {
+    throw new Error("Failed to fetch data.");
   }
-
-  const medicineTitle = getMedicineTitle(medicineCard);
-  const price = getMedicinePrice(medicineCard);
-  const quantity = getQuantity(medicineCard);
-
-  if (quantity > 0) {
-    const cartItem = createCartItem(medicineTitle, price, quantity);
-    shoppingCart.push(cartItem);
-    console.log(
-      `Added to cart: ${cartItem.name} (Quantity: ${cartItem.quantity})`
-    );
-    updateCart();
-  } else {
-    window.alert("Please select a valid quantity (greater than 0).");
-  }
+  return response.json();
 }
 
-// getting the medicine title from the card
-function getMedicineTitle(medicineCard) {
-  const titleElement = medicineCard.querySelector("h3");
-  return titleElement ? titleElement.innerText : "Unknown Medicine";
-}
-
-// Helper function to extract and parse the medicine price
-function getMedicinePrice(medicineCard) {
-  const priceElement = medicineCard.querySelector(".medicine-price");
-  if (!priceElement) {
-    console.warn("Price element missing. Defaulting to LKR 0.");
-    return 0;
-  }
-  const priceText = priceElement.innerText;
-  return parseFloat(priceText.replace("Price: LKR. ", "").trim()) || 0;
-}
-
-// gets the quantity
-function getQuantity(medicineCard) {
-  const quantityInput = medicineCard.querySelector("input[type='number']");
-  const quantityValue = parseInt(quantityInput.value);
-
-  return Number.isInteger(quantityValue) && quantityValue > 0
-    ? quantityValue
-    : 0;
-}
-
-// creating a cart item
-function createCartItem(name, price, quantity) {
-  const itemTotalPrice = price * quantity;
-  return {
-    name: name,
-    price: price,
-    quantity: quantity,
-    totalPrice: itemTotalPrice,
-  };
-}
-
-// updates the cart table
-function updateCart() {
-  const cartTableBody = document.getElementById("cart-body");
-  const totalPriceElement = document.getElementById("net-total");
-
-  if (!cartTableBody || !totalPriceElement) {
-    console.error("Cart table or total price element not found.");
-    return;
-  }
-
-  clearCartDisplay(cartTableBody);
-  const itemMap = groupCartItems();
-  displayCartItems(cartTableBody, itemMap);
-  displayTotalPrice(totalPriceElement, itemMap);
-}
-
-// clears the cart table
-function clearCartDisplay(cartTableBody) {
-  cartTableBody.innerHTML = "";
-}
-
-// if an item already exits add the quantity to the exisiting item
-function groupCartItems() {
-  let itemMap = {};
-  shoppingCart.forEach((item) => {
-    if (itemMap[item.name]) {
-      itemMap[item.name].quantity += item.quantity;
-      itemMap[item.name].totalPrice += item.totalPrice;
-    } else {
-      itemMap[item.name] = { ...item };
-    }
-  });
-  return itemMap;
-}
-
-// adding cart items to the table
-function displayCartItems(cartTableBody, itemMap) {
-  let index = 1;
-  for (const itemName in itemMap) {
-    const cartItem = itemMap[itemName];
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${index}</td>
-      <td>${cartItem.name}</td>
-      <td>${cartItem.quantity}</td>
-      <td>LKR ${cartItem.price.toFixed(2)}</td>
-      <td>LKR ${cartItem.totalPrice.toFixed(2)}</td>
-    `;
-    cartTableBody.appendChild(row);
-    index++;
-  }
-}
-
-// displays net total
-function displayTotalPrice(totalPriceElement, itemMap) {
-  let totalAmount = 0;
-  for (const itemName in itemMap) {
-    totalAmount += itemMap[itemName].totalPrice;
-  }
-  totalPriceElement.innerText = `LKR ${totalAmount.toFixed(2)}`;
-}
+fetchMedicines();

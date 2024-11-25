@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "mainCategory": "Analgesics",
+    "name": "Aspirin",
+    "price": 50,
+    "image": "paracetamol.jpg"
+  },
+  {
+    "id": 2,
+    "mainCategory": "Analgesics",
+    "name": "Ibuprofen",
+    "price": 100,
+    "image": "ibuprofen.jpg"
+  },
+  {
+    "id": 3,
+    "mainCategory": "Analgesics",
+    "name": "Amoxicillin",
+    "price": 150,
+    "image": "amoxicillin.jpg"
+  }
+]
