@@ -12,7 +12,7 @@ async function fetchAndCreateEls() {
 
       // category title
       const categoryTitle = document.createElement("h2");
-      categoryTitle.textContent = category; // For example: "Analgesics"
+      categoryTitle.textContent = category;
 
       // create a container for each category
       const categoryContainer = document.createElement("div");
@@ -37,7 +37,7 @@ async function fetchAndCreateEls() {
         price.classList.add("medicine-price");
         price.textContent = `Price: LKR. ${medicine.price}`;
 
-        // quantity input (can be adjusted later)
+        // quantity input
         const inputElement = document.createElement("input");
         inputElement.type = "number";
         inputElement.placeholder = "Enter quantity";
@@ -68,7 +68,7 @@ async function fetchAndCreateEls() {
   }
 }
 
-// fet
+// fetch data from the json file
 async function fetchMedicines() {
   const response = await fetch("assets/json/medicines.json");
   if (!response.ok) {
@@ -76,3 +76,12 @@ async function fetchMedicines() {
   }
   return response.json();
 }
+
+// all below during add to cart
+
+// handle float point values
+// negative values
+
+// all below in checkout page
+
+// give a message thanking the user with the delivery date and take him back to the order page
