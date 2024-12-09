@@ -62,6 +62,8 @@ async function fetchAndCreateEls() {
       // append the category title and its container to the main container
       mainMedicineContainer.appendChild(categoryTitle);
       mainMedicineContainer.appendChild(categoryContainer);
+
+      console.log(categoryContainer);
     }
   } catch (error) {
     console.error(error);
@@ -77,6 +79,103 @@ async function fetchMedicines() {
   return response.json();
 }
 
+const cards = document.querySelectorAll(".medicine-card");
+const cart = document.getElementById("cart-body");
+const netTotal = document.getElementById("net-total");
+const selectedItems = {};
+
+function handleCardClick(event) {
+  const card = event.currentTarget;
+  const itemId = card.id;
+  const itemName = card.querySelector("h3").textContent;
+  const itemPrice = parseFloat(
+    card.querySelector(".medicine-price").textContent
+  );
+
+  if (selectedItems[itemId]) {
+    selectedItems[itemId].count++;
+  } else {
+    selectedItems[itemId] = {
+      name: itemName,
+      price: itemPrice,
+      count: 1,
+    };
+  }
+
+  updateCart();
+}
+
+// alter this as per your requirements
+function updateCart() {
+  cart.innerHTML = "";
+  let total = 0;
+
+  for (const itemId in selectedItems) {
+    const item = selectedItems[itemId];
+    const listItem = document.createElement("li");
+    const quantityContainer = document.createElement("div");
+    const quantityText = document.createElement("span");
+    const addButton = document.createElement("button");
+    const subtractButton = document.createElement("button");
+
+    addButton.textContent = "+";
+    subtractButton.textContent = "-";
+
+    quantityText.textContent = item.count;
+
+    addButton.addEventListener("click", () => {
+      addItem(itemId);
+    });
+
+    subtractButton.addEventListener("click", () => {
+      removeItem(itemId);
+    });
+
+    const hr = document.createElement("hr");
+
+    quantityContainer.appendChild(subtractButton);
+    quantityContainer.appendChild(quantityText);
+    quantityContainer.appendChild(addButton);
+    quantityContainer.appendChild(hr);
+
+    listItem.textContent = `${item.name} - $${item.price * item.count}`;
+    listItem.appendChild(quantityContainer);
+    cart.appendChild(listItem);
+
+    total += item.price * item.count;
+  }
+
+  totalElement.textContent = `Общая сумма: $${total.toFixed(2)}`;
+}
+
+function addItem(itemId) {
+  if (selectedItems[itemId]) {
+    selectedItems[itemId].count++;
+  }
+  updateCart();
+}
+
+function addItem(itemId) {
+  if (selectedItems[itemId]) {
+    selectedItems[itemId].count++;
+  }
+  updateCart();
+}
+
+function removeItem(itemId) {
+  if (selectedItems[itemId]) {
+    selectedItems[itemId].count--;
+    if (selectedItems[itemId].count <= 0) {
+      delete selectedItems[itemId];
+    }
+  }
+  updateCart();
+}
+
+cards.forEach((card) => {
+  card.addEventListener("click", handleCardClick);
+});
+
 // all below during add to cart
 
 // handle float point values
@@ -85,3 +184,6 @@ async function fetchMedicines() {
 // all below in checkout page
 
 // give a message thanking the user with the delivery date and take him back to the order page
+
+// structure
+// on click of the button, get the quantity, medicine name, and price and append it to the table
