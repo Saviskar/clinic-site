@@ -10,7 +10,7 @@
       "id": 2,
       "name": "Ibuprofen",
       "price": 100,
-      "image": "https://www.medicinedirect.co.uk/media/catalog/product/cache/8bf3693ed458c257f5171ffffa4e8921/2/2/220-4956.jpg  "
+      "image": "https://www.medicinedirect.co.uk/media/catalog/product/cache/8bf3693ed458c257f5171ffffa4e8921/2/2/220-4956.jpg"
     },
     {
       "id": 3,
@@ -145,7 +145,7 @@
       "image": "https://www.carelink.lk/wp-content/uploads/2022/11/Allegra_120mg_Carelink.jpg"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Claritin",
       "price": 120,
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_xBd1OCk1MKGNbLVINrn7W4dbTcZrJqZZqQ&s"

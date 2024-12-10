@@ -1,189 +1,147 @@
 document.addEventListener("DOMContentLoaded", fetchAndCreateEls);
 
+const selectedItems = {}; // To track selected medicines
+
 async function fetchAndCreateEls() {
   const mainMedicineContainer = document.getElementById("medicine-order-form");
 
   try {
     const medicines = await fetchMedicines();
 
-    // loop through each category in the JSON
+    // Loop through categories
     for (const category in medicines) {
       const categoryData = medicines[category];
 
-      // category title
+      // Create category title and container
       const categoryTitle = document.createElement("h2");
       categoryTitle.textContent = category;
 
-      // create a container for each category
       const categoryContainer = document.createElement("div");
       categoryContainer.classList.add("category-container");
 
-      // loop through the medicines in the category
-      categoryData.forEach((medicine) => {
+      // Create cards for medicines
+      categoryData.forEach((medicine, index) => {
         const medicineCard = document.createElement("div");
         medicineCard.classList.add("medicine-card");
+        medicineCard.dataset.id = `${category}-${index}`;
 
-        // image of the medicine
+        // Medicine image
         const image = document.createElement("img");
         image.classList.add("medicine-image");
-        image.src = `${medicine.image}`;
+        image.src = medicine.image;
 
-        // title of the medicine
+        // Medicine title
         const medicineTitle = document.createElement("h3");
         medicineTitle.textContent = medicine.name;
 
-        // price of the medicine
+        // Medicine price
         const price = document.createElement("p");
         price.classList.add("medicine-price");
         price.textContent = `Price: LKR. ${medicine.price}`;
 
-        // quantity input
+        // Quantity input
         const inputElement = document.createElement("input");
         inputElement.type = "number";
         inputElement.placeholder = "Enter quantity";
         inputElement.min = "1";
 
-        // add to Cart button
+        // Add to cart button
         const button = document.createElement("button");
         button.classList.add("add-to-cart");
         button.textContent = "Add to Cart";
+        button.addEventListener("click", () =>
+          addToCart(medicine, inputElement.value)
+        );
 
-        // append everything to the card
-        medicineCard.appendChild(image);
-        medicineCard.appendChild(medicineTitle);
-        medicineCard.appendChild(price);
-        medicineCard.appendChild(inputElement);
-        medicineCard.appendChild(button);
-
-        // append the card to the category container
+        // Append elements to card
+        medicineCard.append(image, medicineTitle, price, inputElement, button);
         categoryContainer.appendChild(medicineCard);
       });
 
-      // append the category title and its container to the main container
-      mainMedicineContainer.appendChild(categoryTitle);
-      mainMedicineContainer.appendChild(categoryContainer);
-
-      console.log(categoryContainer);
+      // Append to main container
+      mainMedicineContainer.append(categoryTitle, categoryContainer);
     }
   } catch (error) {
-    console.error(error);
+    console.error("Failed to fetch medicines:", error);
   }
 }
 
-// fetch data from the json file
 async function fetchMedicines() {
   const response = await fetch("assets/json/medicines.json");
-  if (!response.ok) {
-    throw new Error("Failed to fetch data.");
-  }
+  if (!response.ok) throw new Error("Failed to fetch data.");
   return response.json();
 }
 
-const cards = document.querySelectorAll(".medicine-card");
-const cart = document.getElementById("cart-body");
+const cartBody = document.getElementById("cart-body");
 const netTotal = document.getElementById("net-total");
-const selectedItems = {};
 
-function handleCardClick(event) {
-  const card = event.currentTarget;
-  const itemId = card.id;
-  const itemName = card.querySelector("h3").textContent;
-  const itemPrice = parseFloat(
-    card.querySelector(".medicine-price").textContent
-  );
+function addToCart(medicine, quantity) {
+  const itemId = medicine.name;
+  const price = parseFloat(medicine.price);
+
+  if (!quantity || quantity <= 0)
+    return alert("Please enter a valid quantity.");
 
   if (selectedItems[itemId]) {
-    selectedItems[itemId].count++;
+    selectedItems[itemId].quantity += parseInt(quantity);
   } else {
     selectedItems[itemId] = {
-      name: itemName,
-      price: itemPrice,
-      count: 1,
+      name: medicine.name,
+      price: price,
+      quantity: parseInt(quantity),
     };
   }
 
   updateCart();
 }
 
-// alter this as per your requirements
 function updateCart() {
-  cart.innerHTML = "";
+  cartBody.innerHTML = "";
   let total = 0;
 
   for (const itemId in selectedItems) {
     const item = selectedItems[itemId];
-    const listItem = document.createElement("li");
-    const quantityContainer = document.createElement("div");
-    const quantityText = document.createElement("span");
-    const addButton = document.createElement("button");
-    const subtractButton = document.createElement("button");
+    total += item.price * item.quantity;
 
-    addButton.textContent = "+";
-    subtractButton.textContent = "-";
+    const row = document.createElement("tr");
 
-    quantityText.textContent = item.count;
+    row.innerHTML = `
+      <td>${item.name}</td>
+      <td>${item.quantity}</td>
+      <td>LKR. ${item.price}</td>
+      <td>LKR. ${item.price * item.quantity}</td>
+      <td>
+        <button class="add-btn" onclick="addItem('${itemId}')">+</button>
+        <button class="subtract-btn" onclick="removeItem('${itemId}')">-</button>
+      </td>
+    `;
 
-    addButton.addEventListener("click", () => {
-      addItem(itemId);
-    });
-
-    subtractButton.addEventListener("click", () => {
-      removeItem(itemId);
-    });
-
-    const hr = document.createElement("hr");
-
-    quantityContainer.appendChild(subtractButton);
-    quantityContainer.appendChild(quantityText);
-    quantityContainer.appendChild(addButton);
-    quantityContainer.appendChild(hr);
-
-    listItem.textContent = `${item.name} - $${item.price * item.count}`;
-    listItem.appendChild(quantityContainer);
-    cart.appendChild(listItem);
-
-    total += item.price * item.count;
+    cartBody.appendChild(row);
   }
 
-  totalElement.textContent = `Общая сумма: $${total.toFixed(2)}`;
+  netTotal.textContent = `LKR ${total}`;
 }
 
 function addItem(itemId) {
   if (selectedItems[itemId]) {
-    selectedItems[itemId].count++;
+    selectedItems[itemId].quantity++;
+    updateCart();
   }
-  updateCart();
-}
-
-function addItem(itemId) {
-  if (selectedItems[itemId]) {
-    selectedItems[itemId].count++;
-  }
-  updateCart();
 }
 
 function removeItem(itemId) {
   if (selectedItems[itemId]) {
-    selectedItems[itemId].count--;
-    if (selectedItems[itemId].count <= 0) {
+    selectedItems[itemId].quantity--;
+    if (selectedItems[itemId].quantity <= 0) {
       delete selectedItems[itemId];
     }
+    updateCart();
   }
-  updateCart();
 }
 
-cards.forEach((card) => {
-  card.addEventListener("click", handleCardClick);
+// Checkout functionality
+document.querySelector(".checkout-btn").addEventListener("click", () => {
+  alert("Thank you for your purchase.");
+  selectedItems = {};
+  updateCart();
 });
-
-// all below during add to cart
-
-// handle float point values
-// negative values
-
-// all below in checkout page
-
-// give a message thanking the user with the delivery date and take him back to the order page
-
-// structure
-// on click of the button, get the quantity, medicine name, and price and append it to the table
