@@ -116,12 +116,7 @@
         </div>
       </section>
 
-      <form
-        action="#"
-        method="POST"
-        id="medicine-order-form"
-        class="medicine-order-form"
-      ></form>
+      <div id="medicine-order-form"></div>
 
       <div class="container cart-container">
         <table id="medicine-table">
@@ -135,7 +130,7 @@
             </tr>
           </thead>
           <tbody id="cart-body">
-            <!-- Cart items will be dynamically added here -->
+            // cart items gets appended here
           </tbody>
           <tfoot>
             <tr>
@@ -146,7 +141,10 @@
           </tfoot>
         </table>
 
-        <button class="submit-order checkout-btn">Checkout</button>
+        <button class="submit-order checkout-btn" id="checkout-btn">
+          Buy Now
+        </button>
+        <button class="favorites-btn" id="fav-btn">Add to favorites</button>
       </div>
     </main>
 

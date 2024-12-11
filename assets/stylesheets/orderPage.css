@@ -155,56 +155,51 @@ tr:hover {
   padding-bottom: 2em;
 }
 
+/* General Button Styles */
+button {
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none; /* Remove default focus outline */
+}
+
+/* Specific Button Classes */
 .submit-order.checkout-btn {
-  background-color: #007bff; /* Primary blue color */
-  color: white; /* Text color */
-  border: none; /* Removes the default border */
-  border-radius: 5px; /* Slightly rounded corners */
-  padding: 10px 20px; /* Adds space around the text */
-  font-size: 16px; /* Makes text readable */
-  font-weight: bold; /* Emphasizes the text */
-  cursor: pointer; /* Changes cursor to pointer for better UX */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
-  margin-top: 15px; /* Adds space above the button */
+  background-color: #007bff;
+  float: right; /* Align to the right */
 }
 
-.submit-order.checkout-btn:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
-  transform: scale(1.05); /* Slightly enlarges the button on hover */
+.favorites-btn {
+  background-color: #28a745; /* Green for favorite button */
 }
 
-.submit-order.checkout-btn:active {
-  background-color: #004085; /* Even darker blue for click effect */
-  transform: scale(0.95); /* Slightly shrinks on click */
+/* Hover Effects */
+.submit-order.checkout-btn:hover,
+.favorites-btn:hover {
+  background-color: #0056b3; /* Darker blue for checkout */
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
-.submit-order.checkout-btn:focus {
-  outline: none; /* Removes default focus outline */
-  box-shadow: 0 0 5px #007bff; /* Adds a subtle focus effect */
-}
-.submit-order.checkout-btn {
-  background-color: #007bff; /* Primary blue color */
-  color: white; /* Text color */
-  border: none; /* Removes the default border */
-  border-radius: 5px; /* Slightly rounded corners */
-  padding: 10px 20px; /* Adds space around the text */
-  font-size: 16px; /* Makes text readable */
-  font-weight: bold; /* Emphasizes the text */
-  cursor: pointer; /* Changes cursor to pointer for better UX */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+/* Active (Click) Effects */
+.submit-order.checkout-btn:active,
+.favorites-btn:active {
+  background-color: #004085; /* Even darker blue */
+  transform: scale(0.95); /* Shrink on click */
 }
 
-.submit-order.checkout-btn:hover {
-  background-color: #0056b3; /* Darker blue for hover effect */
-  transform: scale(1.05); /* Slightly enlarges the button on hover */
+/* Focus (Keyboard Navigation) Effects */
+.submit-order.checkout-btn:focus,
+.favorites-btn:focus {
+  box-shadow: 0 0 5px #007bff; /* Subtle blue glow */
 }
 
-.submit-order.checkout-btn:active {
-  background-color: #004085; /* Even darker blue for click effect */
-  transform: scale(0.95); /* Slightly shrinks on click */
-}
-
-.submit-order.checkout-btn:focus {
-  outline: none; /* Removes default focus outline */
-  box-shadow: 0 0 5px #007bff; /* Adds a subtle focus effect */
+/* Ensure Layout Consistency */
+button {
+  margin: 10px; /* Add spacing between buttons */
 }
