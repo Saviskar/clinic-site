@@ -6,6 +6,7 @@ const addFavBtn = document.getElementById("fav-btn");
 const applyFavBtn = document.getElementById("apply-fav-btn");
 const clearCartBtn = document.getElementById("clear-cart-btn");
 
+// Initialize the application
 async function initializeApp() {
   try {
     const medicines = await fetchMedicineData();
@@ -16,51 +17,53 @@ async function initializeApp() {
   }
 }
 
+// Fetch medicine data from a JSON file
 async function fetchMedicineData() {
   const response = await fetch("assets/json/medicines.json");
   if (!response.ok) throw new Error("Failed to fetch data.");
   return response.json();
 }
 
+// Create medicine cards dynamically based on fetched data
 function createMedicineCards(medicines) {
   const mainMedicineContainer = document.getElementById("medicine-order-form");
 
   for (const category in medicines) {
     const categoryData = medicines[category];
 
-    // create category title and container
+    // Create category title and container
     const categoryTitle = document.createElement("h2");
     categoryTitle.textContent = category;
 
     const categoryContainer = document.createElement("div");
     categoryContainer.classList.add("category-container");
 
-    // create cards for medicines
+    // Create cards for medicines
     categoryData.forEach((medicine) => {
       const medicineCard = document.createElement("div");
       medicineCard.classList.add("medicine-card");
 
-      // medicine image
+      // Medicine image
       const image = document.createElement("img");
       image.classList.add("medicine-image");
       image.src = medicine.image;
 
-      // medicine title
+      // Medicine title
       const medicineTitle = document.createElement("h3");
       medicineTitle.textContent = medicine.name;
 
-      // medicine price
+      // Medicine price
       const price = document.createElement("p");
       price.classList.add("medicine-price");
       price.textContent = `Price: LKR. ${medicine.price}`;
 
-      // quantity input
+      // Quantity input
       const inputElement = document.createElement("input");
       inputElement.type = "number";
       inputElement.placeholder = "Enter quantity";
       inputElement.min = "1";
 
-      // add to cart button
+      // Add to cart button
       const button = document.createElement("button");
       button.classList.add("add-to-cart");
       button.textContent = "Add to Cart";
@@ -68,39 +71,17 @@ function createMedicineCards(medicines) {
         addToCart(medicine, inputElement.value)
       );
 
-      // append elements to card
+      // Append elements to card
       medicineCard.append(image, medicineTitle, price, inputElement, button);
       categoryContainer.appendChild(medicineCard);
     });
 
-    // append to main container
+    // Append to main container
     mainMedicineContainer.append(categoryTitle, categoryContainer);
   }
 }
 
-function addToCart(medicine, quantity) {
-  const itemId = medicine.name;
-  const price = parseFloat(medicine.price);
-
-  if (!quantity || quantity <= 0) {
-    alert("Please enter a valid quantity.");
-    return;
-  }
-
-  if (selectedItems[itemId]) {
-    selectedItems[itemId].quantity += parseInt(quantity);
-  } else {
-    selectedItems[itemId] = {
-      name: medicine.name,
-      price: price,
-      quantity: parseInt(quantity),
-    };
-  }
-
-  saveCartToStorage(); // ave updated cart to local storage
-  updateCart();
-}
-
+// Update the cart display
 function updateCart() {
   const cartBody = document.getElementById("cart-body");
   const netTotal = document.getElementById("net-total");
@@ -146,50 +127,79 @@ function updateCart() {
   netTotal.textContent = `LKR ${total}`;
 }
 
+// Add selected medicine to the cart
+function addToCart(medicine, quantity) {
+  const itemId = medicine.name;
+  const price = parseFloat(medicine.price);
+
+  if (!quantity || quantity <= 0) {
+    alert("Please enter a valid quantity.");
+    return;
+  }
+
+  if (selectedItems[itemId]) {
+    selectedItems[itemId].quantity += parseInt(quantity);
+  } else {
+    selectedItems[itemId] = {
+      name: medicine.name,
+      price: price,
+      quantity: parseInt(quantity),
+    };
+  }
+
+  updateCart();
+}
+
+// Increase item quantity in the cart
 function addItem(itemId) {
   if (selectedItems[itemId]) {
     selectedItems[itemId].quantity++;
-    saveCartToStorage(); // save updated cart to local storage
+    saveCartToStorage(); // Save updated cart to local storage
     updateCart();
   }
 }
 
+// Decrease item quantity in the cart
 function removeItem(itemId) {
   if (selectedItems[itemId]) {
     selectedItems[itemId].quantity--;
     if (selectedItems[itemId].quantity <= 0) {
       delete selectedItems[itemId];
     }
-    saveCartToStorage(); // save updated cart to local storage
+    saveCartToStorage(); // Save updated cart to local storage
     updateCart();
   }
 }
 
+// Save cart to local storage
 function saveCartToStorage() {
-  localStorage.setItem("cart", JSON.stringify(selectedItems));
+  localStorage.setItem("favorites", JSON.stringify(selectedItems));
 }
 
+// Load cart from local storage
 function loadCartFromStorage() {
-  const storedCart = JSON.parse(localStorage.getItem("cart"));
+  const storedCart = JSON.parse(localStorage.getItem("favorites"));
   if (storedCart) {
     Object.assign(selectedItems, storedCart);
     updateCart();
   }
 }
 
-applyFavBtn.addEventListener("click", loadCartFromStorage);
-addFavBtn.addEventListener("click", saveCartToStorage);
-
+// Redirect to checkout page
 function redirectToCheckout() {
   window.location.href = "checkoutPage.html";
 }
 
+// Clear the cart
 function clearCart() {
   Object.keys(selectedItems).forEach((itemId) => delete selectedItems[itemId]); // Clear selected items
-  // saveCartToStorage(); // clear cart from local storage
-  updateCart(); // refresh the cart display
+  // saveCartToStorage(); // Clear cart from local storage
+  updateCart(); // Refresh the cart display
   alert("Cart cleared successfully!");
 }
 
+// Event listeners for buttons
 checkoutBtn.addEventListener("click", redirectToCheckout);
 clearCartBtn.addEventListener("click", clearCart);
+applyFavBtn.addEventListener("click", loadCartFromStorage);
+addFavBtn.addEventListener("click", saveCartToStorage);
