@@ -1,5 +1,7 @@
-document.addEventListener("DOMContentLoaded", initializeApp);
-document.addEventListener("DOMContentLoaded", () => clearCart());
+document.addEventListener("DOMContentLoaded", () => {
+  initializeApp();
+  clearCart();
+});
 
 const selectedItems = {}; // To track selected medicines
 const checkoutBtn = document.getElementById("checkout-btn");
@@ -126,6 +128,8 @@ function updateCart() {
   }
 
   netTotal.textContent = `LKR ${total}`;
+
+  return total;
 }
 
 // Add selected medicine to the cart
@@ -188,7 +192,7 @@ function loadCartFromStorage() {
 
 // Redirect to checkout page
 function redirectToCheckout() {
-  window.location.href = "checkoutPage.html";
+  window.location.href = "pharmacy.html";
 }
 
 // Clear the cart
@@ -201,8 +205,31 @@ function clearCart(showAlert = false) {
   }
 }
 
+// function validateCheckout() {
+//   const total = updateCart();
+//   if (total === 0) {
+//     alert("Add items to cart to proceed to checkout.");
+//     return;
+//   }
+//   window.location.href = "checkoutPage.html";
+// }
+
+// checkoutBtn.addEventListener("click", validateCheckout);
+
 // Event listeners for buttons
-checkoutBtn.addEventListener("click", redirectToCheckout);
+checkoutBtn.addEventListener("click", () => {
+  // validateCheckout();
+  redirectCartEmpty();
+});
 clearCartBtn.addEventListener("click", () => clearCart(true));
 applyFavBtn.addEventListener("click", loadCartFromStorage);
 addFavBtn.addEventListener("click", saveCartToStorage);
+
+// redirect to the same page and clear cart if there is no things in the cart
+function redirectCartEmpty() {
+  if (Object.keys(selectedItems).length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+  window.location.href = "checkoutPage.html";
+}
