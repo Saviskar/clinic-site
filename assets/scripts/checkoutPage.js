@@ -108,7 +108,108 @@ function validateForm() {
   return isValid; // return the result of the validation
 }
 
+const paymentMethod = document.getElementById("payment-method");
+const medicineSectionOne = document.getElementById("DebitCreditPayment");
+
+function displayCardInfo() {
+  if (paymentMethod.value === "card-payment") {
+    medicineSectionOne.style.display = "block";
+  } else {
+    medicineSectionOne.style.display = "none";
+  }
+}
+
+displayCardInfo();
+paymentMethod.addEventListener("change", displayCardInfo);
+
+// function handlePaymentMethodChange() {
+//   const paymentMethodValue = document.getElementById("payment-method").value;
+//   const paymentDetails = document.getElementById("payment-details");
+
+//   console.log(paymentDetails);
+
+//   const medicineSectionOne = document.getElementById("cardPayment");
+
+//   if (paymentMethodValue === "card-payment") {
+//     // create and configure the label for Card Number
+//     const cardNumberLabel = document.createElement("label");
+//     cardNumberLabel.setAttribute("for", "card-number");
+//     cardNumberLabel.textContent = "Card Number";
+//     cardNumberLabel.classList.add("medicine-card");
+
+//     // create and configure the input for Card Number
+//     const cardNumberInput = document.createElement("input");
+//     cardNumberInput.setAttribute("type", "text");
+//     cardNumberInput.setAttribute("id", "card-number");
+//     cardNumberInput.setAttribute("name", "card-number");
+//     cardNumberInput.setAttribute("required", true);
+
+//     // create and configure the error span for Card Number
+//     const cardErrorDisplayEl = document.createElement("span");
+//     cardErrorDisplayEl.setAttribute("id", "card-error");
+//     cardErrorDisplayEl.classList.add("error-message");
+
+//     // append elements for Card Number
+//     paymentDetails.appendChild(cardNumberLabel);
+//     paymentDetails.appendChild(cardNumberInput);
+//     paymentDetails.appendChild(cardErrorDisplayEl);
+
+//     // create and configure the label for Expiry Date
+//     const expiryDateLabel = document.createElement("label");
+//     expiryDateLabel.setAttribute("for", "expiry-date");
+//     expiryDateLabel.textContent = "Expiry Date";
+
+//     // create and configure the input for Expiry Date
+//     const expiryDateInput = document.createElement("input");
+//     expiryDateInput.setAttribute("type", "month");
+//     expiryDateInput.setAttribute("id", "expiry-date");
+//     expiryDateInput.setAttribute("name", "expiry-date");
+//     expiryDateInput.setAttribute("required", true);
+
+//     // create and configure the error span for Expiry Date
+//     const dateErrorDisplayEl = document.createElement("span");
+//     dateErrorDisplayEl.setAttribute("id", "date-error");
+//     dateErrorDisplayEl.classList.add("error-message");
+
+//     // append elements for Expiry Date
+//     paymentDetails.appendChild(expiryDateLabel);
+//     paymentDetails.appendChild(expiryDateInput);
+//     paymentDetails.appendChild(dateErrorDisplayEl);
+
+//     // create and configure the label for CVV
+//     const cvvLabel = document.createElement("label");
+//     cvvLabel.setAttribute("for", "cvv");
+//     cvvLabel.textContent = "CVV";
+
+//     // create and configure the input for CVV
+//     const cvvInput = document.createElement("input");
+//     cvvInput.setAttribute("type", "text");
+//     cvvInput.setAttribute("id", "cvv");
+//     cvvInput.setAttribute("name", "cvv");
+//     cvvInput.setAttribute("required", true);
+
+//     // create and configure the error span for CVV
+//     const cvvErrorDisplayEl = document.createElement("span");
+//     cvvErrorDisplayEl.setAttribute("id", "cvv-error");
+//     cvvErrorDisplayEl.classList.add("error-message");
+
+//     // append elements for CVV
+//     paymentDetails.appendChild(cvvLabel);
+//     paymentDetails.appendChild(cvvInput);
+//     paymentDetails.appendChild(cvvErrorDisplayEl);
+//   } else if (paymentMethod === "cash-on-delivery") {
+//     // render content for Cash on Delivery
+//     paymentDetails.innerHTML = `
+//       <p>You selected Cash on Delivery. Please prepare the amount during delivery.</p>
+//     `;
+//   } else {
+//     // show error if no payment method is selected
+//     alert("Else statement");
+//   }
+// }
+
 function redirectOrderPage() {
+  alert("Thank you for purschasing, your order will be delivered");
   window.location.href = "orderPage.html";
 }
 
