@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", initializeApp);
 
 const selectedItems = {}; // To track selected medicines
 const checkoutBtn = document.getElementById("checkout-btn");
-const addFavBtn = document.getElementById("add-fav-btn");
+const addFavBtn = document.getElementById("fav-btn");
+const applyFavBtn = document.getElementById("apply-fav-btn");
 const clearCartBtn = document.getElementById("clear-cart-btn");
 
 async function initializeApp() {
@@ -176,13 +177,16 @@ function loadCartFromStorage() {
   }
 }
 
+applyFavBtn.addEventListener("click", loadCartFromStorage);
+addFavBtn.addEventListener("click", saveCartToStorage);
+
 function redirectToCheckout() {
   window.location.href = "checkoutPage.html";
 }
 
 function clearCart() {
   Object.keys(selectedItems).forEach((itemId) => delete selectedItems[itemId]); // Clear selected items
-  saveCartToStorage(); // clear cart from local storage
+  // saveCartToStorage(); // clear cart from local storage
   updateCart(); // refresh the cart display
   alert("Cart cleared successfully!");
 }
