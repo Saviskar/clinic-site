@@ -139,6 +139,8 @@ function addToCart(medicine, quantity) {
   const itemId = medicine.name;
   const price = parseFloat(medicine.price);
 
+  quantity = Math.ceil(parseFloat(quantity));
+
   if (!quantity || quantity <= 0 || quantity > 200) {
     alert("Please enter a quantity between 1 to 200.");
     return;
