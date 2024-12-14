@@ -219,17 +219,32 @@ function clearCart(showAlert = false) {
 // Event listeners for buttons
 checkoutBtn.addEventListener("click", () => {
   // validateCheckout();
-  redirectCartEmpty();
+  saveCartToBuyNowStorage();
+  window.location.href = "checkoutPage.html";
 });
 clearCartBtn.addEventListener("click", () => clearCart(true));
 applyFavBtn.addEventListener("click", loadCartFromStorage);
 addFavBtn.addEventListener("click", saveCartToStorage);
 
-// redirect to the same page and clear cart if there is no things in the cart
-function redirectCartEmpty() {
-  if (Object.keys(selectedItems).length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
-  window.location.href = "checkoutPage.html";
+// Save cart to local storage under the key "cart"
+// function saveCartToBuyNowStorage() {
+//   localStorage.setItem("cart", JSON.stringify(selectedItems));
+// }
+
+function saveCartToBuyNowStorage() {
+  const cartContainerContent =
+    document.getElementById("cartContainer").innerHTML;
+  localStorage.setItem(
+    "cartContainerContent",
+    JSON.stringify(cartContainerContent)
+  );
 }
+
+// redirect to the same page and clear cart if there is no things in the cart
+// function redirectCartEmpty() {
+//   if (Object.keys(selectedItems).length === 0) {
+//     alert("Your cart is empty!");
+//     return;
+//   }
+//   window.location.href = "checkoutPage.html";
+// }

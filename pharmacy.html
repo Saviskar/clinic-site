@@ -118,7 +118,7 @@
 
       <div id="medicine-order-form"></div>
 
-      <div class="container cart-container">
+      <div class="container cart-container" id="cartContainer">
         <table id="medicine-table">
           <thead>
             <tr>
@@ -141,14 +141,16 @@
           </tfoot>
         </table>
 
-        <button class="submit-order checkout-btn" id="checkout-btn">
-          Buy Now
-        </button>
-        <button class="favorites-btn" id="fav-btn">Add to favorites</button>
-        <button class="add-favs-btn favorites-btn" id="apply-fav-btn">
-          Apply Favorites
-        </button>
-        <button id="clear-cart-btn" class="favorites-btn">Clear Cart</button>
+        <div class="button-container">
+          <button class="submit-order checkout-btn" id="checkout-btn">
+            Buy Now
+          </button>
+          <button class="favorites-btn" id="fav-btn">Add to favorites</button>
+          <button class="add-favs-btn favorites-btn" id="apply-fav-btn">
+            Apply Favorites
+          </button>
+          <button id="clear-cart-btn" class="favorites-btn">Clear Cart</button>
+        </div>
       </div>
     </main>
 
