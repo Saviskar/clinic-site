@@ -1,14 +1,14 @@
 const placeOrderBtn = document.getElementById("placeOrder");
 
 function validateForm() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const address = document.getElementById("address").value;
-  const city = document.getElementById("city").value;
-  const postalCode = document.getElementById("postal-code").value;
-  const cardNumber = document.getElementById("card-number").value;
-  const expiryDate = document.getElementById("expiry-date").value;
-  const cvvNumber = document.getElementById("cvv").value;
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const city = document.getElementById("city").value.trim();
+  const postalCode = document.getElementById("postal-code").value.trim();
+  const cardNumber = document.getElementById("card-number").value.trim();
+  const expiryDate = document.getElementById("expiry-date").value.trim();
+  const cvvNumber = document.getElementById("cvv").value.trim();
 
   const nameError = document.getElementById("name-error");
   const emailError = document.getElementById("email-error");
@@ -41,7 +41,7 @@ function validateForm() {
   if (
     email === "" ||
     !email.includes("@") ||
-    email.indexOf("@") > email.lastIndexOf(".") // checks if @ is before the period
+    email.indexOf("@") > email.lastIndexOf(".")
   ) {
     emailError.textContent = "Please enter a valid email.";
     isValid = false;
@@ -67,38 +67,69 @@ function validateForm() {
     isValid = false;
   }
 
+  // if payment method === cash on delivery just redirect to pharmacy page
+  // if payment method === card payment validate card details and then redirect
   // card number validation
-  if (
-    cardNumber === "" ||
-    !/^\d+$/.test(cardNumber) ||
-    (cardNumber.length !== 15 && cardNumber.length !== 16)
-  ) {
-    cardError.textContent = "Please enter a valid card number.";
-    isValid = false;
-  }
 
-  // expiry date validation
-  if (expiryDate === "") {
-    dateError.textContent = "Expiry date is required.";
-    isValid = false;
-  } else {
-    const currentDate = new Date();
-    const [expiryYear, expiryMonth] = expiryDate.split("-");
-    const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth() + 1;
+  if (paymentMethod.value === "card-payment") {
     if (
-      expiryYear < currentYear ||
-      (expiryYear === currentYear && expiryMonth < currentMonth)
+      cardNumber === "" ||
+      !/^\d+$/.test(cardNumber) ||
+      (cardNumber.length !== 15 && cardNumber.length !== 16) ||
+      !checkLuhn(cardNumber)
     ) {
-      dateError.textContent = "Card has expired.";
+      cardError.textContent = "Please enter a valid card number.";
       isValid = false;
     }
-  }
 
-  // cvv validation
-  if (cvvNumber === "" || !/^\d{3,4}$/.test(cvvNumber)) {
-    cvvError.textContent = "Please enter a valid CVV.";
-    isValid = false;
+    function checkLuhn(cardNo) {
+      let nDigits = cardNo.length;
+
+      let nSum = 0;
+      let isSecond = false;
+      for (let i = nDigits - 1; i >= 0; i--) {
+        let d = cardNo[i].charCodeAt() - "0".charCodeAt();
+
+        if (isSecond == true) d = d * 2;
+
+        // We add two digits to handle
+        // cases that make two digits
+        // after doubling
+        nSum += parseInt(d / 10, 10);
+        nSum += d % 10;
+
+        isSecond = !isSecond;
+      }
+      return nSum % 10 == 0;
+    }
+
+    // expiry date validation
+    if (expiryDate === "") {
+      dateError.textContent = "Expiry date is required.";
+      isValid = false;
+    } else {
+      const currentDate = new Date();
+      const [expiryYear, expiryMonth] = expiryDate.split("-").map(Number);
+
+      if (
+        isNaN(expiryYear) ||
+        isNaN(expiryMonth) ||
+        expiryYear < currentDate.getFullYear() ||
+        (expiryYear === currentDate.getFullYear() &&
+          expiryMonth < currentDate.getMonth() + 1)
+      ) {
+        dateError.textContent = "Card has expired.";
+        isValid = false;
+      }
+    }
+
+    // cvv validation
+    if (cvvNumber === "" || !/^\d{3,4}$/.test(cvvNumber)) {
+      cvvError.textContent = "Please enter a valid CVV.";
+      isValid = false;
+    }
+  } else if (paymentMethod.value === "cash-on-delivery") {
+    // successfullPurchase();
   }
 
   if (isValid) {
@@ -106,6 +137,7 @@ function validateForm() {
   }
 
   return isValid; // return the result of the validation
+  console.log(isValid);
 }
 
 const paymentMethod = document.getElementById("payment-method");
@@ -138,13 +170,19 @@ displayCardInfo();
 paymentMethod.addEventListener("change", displayCardInfo);
 
 function redirectOrderPage() {
-  alert("Thank you for purschasing, your order will be delivered");
-  window.location.href = "orderPage.html";
+  // alert("Thank you for purschasing, your order will be delivered");
+  window.location.href = "pharmacy.html";
 }
 
+// placeOrderBtn.addEventListener("click", () => {
+//   validateForm();
+//   successfullPurchase();
+// });
+
 placeOrderBtn.addEventListener("click", () => {
-  validateForm();
-  successfullPurchase();
+  if (validateForm()) {
+    successfullPurchase();
+  }
 });
 
 function successfullPurchase() {
@@ -156,112 +194,6 @@ function successfullPurchase() {
   alert(
     `Thank you for your purchase! Your medicines will be delivered on ${deliveryDate}`
   );
+
+  window.location.href = "pharmacy.html";
 }
-
-// successfullPurchase();
-
-// new successfulpurchase function
-// function displayThankYouMessage() {
-//   const currentDate = new Date();
-
-//   const deliveryDate = new Date();
-//   deliveryDate.setDate(currentDate.getDate() + 3);
-
-//   const options = { year: "numeric", month: "long", day: "numeric" };
-//   const formattedDate = deliveryDate.toLocaleDateString(undefined, options);
-
-//   alert(
-//     `Thank you for your order! Your delivery is expected on ${formattedDate}.`
-//   );
-// }
-
-// Call the function when needed, for example, on the "Buy Now" button click
-// document
-//   .getElementById("checkout-btn")
-//   .addEventListener("click", displayThankYouMessage);
-
-// function handlePaymentMethodChange() {
-//   const paymentMethodValue = document.getElementById("payment-method").value;
-//   const paymentDetails = document.getElementById("payment-details");
-
-//   console.log(paymentDetails);
-
-//   const medicineSectionOne = document.getElementById("cardPayment");
-
-//   if (paymentMethodValue === "card-payment") {
-//     // create and configure the label for Card Number
-//     const cardNumberLabel = document.createElement("label");
-//     cardNumberLabel.setAttribute("for", "card-number");
-//     cardNumberLabel.textContent = "Card Number";
-//     cardNumberLabel.classList.add("medicine-card");
-
-//     // create and configure the input for Card Number
-//     const cardNumberInput = document.createElement("input");
-//     cardNumberInput.setAttribute("type", "text");
-//     cardNumberInput.setAttribute("id", "card-number");
-//     cardNumberInput.setAttribute("name", "card-number");
-//     cardNumberInput.setAttribute("required", true);
-
-//     // create and configure the error span for Card Number
-//     const cardErrorDisplayEl = document.createElement("span");
-//     cardErrorDisplayEl.setAttribute("id", "card-error");
-//     cardErrorDisplayEl.classList.add("error-message");
-
-//     // append elements for Card Number
-//     paymentDetails.appendChild(cardNumberLabel);
-//     paymentDetails.appendChild(cardNumberInput);
-//     paymentDetails.appendChild(cardErrorDisplayEl);
-
-//     // create and configure the label for Expiry Date
-//     const expiryDateLabel = document.createElement("label");
-//     expiryDateLabel.setAttribute("for", "expiry-date");
-//     expiryDateLabel.textContent = "Expiry Date";
-
-//     // create and configure the input for Expiry Date
-//     const expiryDateInput = document.createElement("input");
-//     expiryDateInput.setAttribute("type", "month");
-//     expiryDateInput.setAttribute("id", "expiry-date");
-//     expiryDateInput.setAttribute("name", "expiry-date");
-//     expiryDateInput.setAttribute("required", true);
-
-//     // create and configure the error span for Expiry Date
-//     const dateErrorDisplayEl = document.createElement("span");
-//     dateErrorDisplayEl.setAttribute("id", "date-error");
-//     dateErrorDisplayEl.classList.add("error-message");
-
-//     // append elements for Expiry Date
-//     paymentDetails.appendChild(expiryDateLabel);
-//     paymentDetails.appendChild(expiryDateInput);
-//     paymentDetails.appendChild(dateErrorDisplayEl);
-
-//     // create and configure the label for CVV
-//     const cvvLabel = document.createElement("label");
-//     cvvLabel.setAttribute("for", "cvv");
-//     cvvLabel.textContent = "CVV";
-
-//     // create and configure the input for CVV
-//     const cvvInput = document.createElement("input");
-//     cvvInput.setAttribute("type", "text");
-//     cvvInput.setAttribute("id", "cvv");
-//     cvvInput.setAttribute("name", "cvv");
-//     cvvInput.setAttribute("required", true);
-
-//     // create and configure the error span for CVV
-//     const cvvErrorDisplayEl = document.createElement("span");
-//     cvvErrorDisplayEl.setAttribute("id", "cvv-error");
-//     cvvErrorDisplayEl.classList.add("error-message");
-
-//     // append elements for CVV
-//     paymentDetails.appendChild(cvvLabel);
-//     paymentDetails.appendChild(cvvInput);
-//     paymentDetails.appendChild(cvvErrorDisplayEl);
-//   } else if (paymentMethod === "cash-on-delivery") {
-//     // render content for Cash on Delivery
-//     paymentDetails.innerHTML = `
-//       <p>You selected Cash on Delivery. Please prepare the amount during delivery.</p>
-//     `;
-//   } else {
-//     // show error if no payment method is selected
-//     alert("Else statement");
-//   }
-// }
