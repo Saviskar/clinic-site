@@ -36,8 +36,10 @@ function createMedicineCards(medicines) {
     const categoryData = medicines[category];
 
     // Create category title and container
+    const topBreakSpace = document.createElement("br");
     const categoryTitle = document.createElement("h2");
     categoryTitle.textContent = category;
+    const bottomBreakSpace = document.createElement("br");
 
     const categoryContainer = document.createElement("div");
     categoryContainer.classList.add("category-container");
@@ -82,7 +84,12 @@ function createMedicineCards(medicines) {
     });
 
     // Append to main container
-    mainMedicineContainer.append(categoryTitle, categoryContainer);
+    mainMedicineContainer.append(
+      topBreakSpace,
+      categoryTitle,
+      bottomBreakSpace,
+      categoryContainer
+    );
   }
 }
 
@@ -123,7 +130,12 @@ function updateCart() {
     subtractButton.textContent = "-";
     subtractButton.addEventListener("click", () => removeItem(itemId));
 
-    actionsCell.append(addButton, subtractButton);
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-btn");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => deleteItem(itemId));
+
+    actionsCell.append(addButton, subtractButton, deleteButton);
 
     medRow.append(nameCell, quantityCell, priceCell, totalCell, actionsCell);
     cartBody.appendChild(medRow);
@@ -163,7 +175,7 @@ function addToCart(medicine, quantity) {
 function addItem(itemId) {
   if (selectedItems[itemId]) {
     selectedItems[itemId].quantity++;
-    saveCartToStorage(); // Save updated cart to local storage
+    // saveCartToStorage(); // Save updated cart to local storage
     updateCart();
   }
 }
@@ -175,9 +187,15 @@ function removeItem(itemId) {
     if (selectedItems[itemId].quantity <= 0) {
       delete selectedItems[itemId];
     }
-    saveCartToStorage(); // Save updated cart to local storage
+    // saveCartToStorage(); // Save updated cart to local storage
     updateCart();
   }
+}
+
+// Delete item quantity in the cart
+function deleteItem(itemId) {
+  delete selectedItems[itemId];
+  updateCart();
 }
 
 // Save cart to local storage
@@ -213,17 +231,6 @@ function clearCart(showAlert = false, total) {
   }
 }
 
-// function validateCheckout() {
-//   const total = updateCart();
-//   if (total === 0) {
-//     alert("Add items to cart to proceed to checkout.");
-//     return;
-//   }
-//   window.location.href = "checkoutPage.html";
-// }
-
-// checkoutBtn.addEventListener("click", validateCheckout);
-
 // Event listeners for buttons
 checkoutBtn.addEventListener("click", () => {
   saveCartToBuyNowStorage();
@@ -232,11 +239,6 @@ checkoutBtn.addEventListener("click", () => {
 clearCartBtn.addEventListener("click", () => clearCart(true));
 applyFavBtn.addEventListener("click", loadCartFromStorage);
 addFavBtn.addEventListener("click", saveCartToStorage);
-
-// Save cart to local storage under the key "cart"
-// function saveCartToBuyNowStorage() {
-//   localStorage.setItem("cart", JSON.stringify(selectedItems));
-// }
 
 function saveCartToBuyNowStorage() {
   const cartContainerContent =

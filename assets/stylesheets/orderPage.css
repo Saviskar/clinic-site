@@ -203,3 +203,8 @@ button {
 button {
   margin: 10px; /* Add spacing between buttons */
 }
+
+.delete-btn {
+  background-color: #c90909; /* Even darker blue */
+  transform: scale(0.95);
+}
