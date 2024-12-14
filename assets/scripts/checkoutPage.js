@@ -120,7 +120,6 @@ function displayCardInfo() {
 }
 
 const cartTable = document.getElementById("checkoutCartTable");
-const buttonContainer = document.getElementById("button-container");
 
 function getTableData() {
   const storedTableContent = JSON.parse(
@@ -128,6 +127,12 @@ function getTableData() {
   );
   if (storedTableContent) {
     cartTable.innerHTML = storedTableContent;
+
+    const buttonContainer = document.getElementById("buttonContainer");
+    buttonContainer.style.display = "none";
+
+    // const actionButtons = document.getElementById("actionsBtn");
+    // actionButtons.style.display = "none";
   }
 }
 

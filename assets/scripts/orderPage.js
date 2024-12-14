@@ -113,6 +113,8 @@ function updateCart() {
     const actionsCell = document.createElement("td");
     const addButton = document.createElement("button");
     addButton.classList.add("add-btn");
+    // addButton.setAttribute("id", "actionsBtn");
+
     addButton.textContent = "+";
     addButton.addEventListener("click", () => addItem(itemId));
 
