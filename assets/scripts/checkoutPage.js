@@ -130,9 +130,6 @@ function getTableData() {
 
     const buttonContainer = document.getElementById("buttonContainer");
     buttonContainer.style.display = "none";
-
-    // const actionButtons = document.getElementById("actionsBtn");
-    // actionButtons.style.display = "none";
   }
 }
 
@@ -145,7 +142,43 @@ function redirectOrderPage() {
   window.location.href = "orderPage.html";
 }
 
-placeOrderBtn.addEventListener("click", validateForm);
+placeOrderBtn.addEventListener("click", () => {
+  validateForm();
+  successfullPurchase();
+});
+
+function successfullPurchase() {
+  const currentDate = new Date();
+
+  currentDate.setDate(currentDate.getDate() + 3);
+  const deliveryDate = currentDate.toDateString();
+
+  alert(
+    `Thank you for your purchase! Your medicines will be delivered on ${deliveryDate}`
+  );
+}
+
+// successfullPurchase();
+
+// new successfulpurchase function
+// function displayThankYouMessage() {
+//   const currentDate = new Date();
+
+//   const deliveryDate = new Date();
+//   deliveryDate.setDate(currentDate.getDate() + 3);
+
+//   const options = { year: "numeric", month: "long", day: "numeric" };
+//   const formattedDate = deliveryDate.toLocaleDateString(undefined, options);
+
+//   alert(
+//     `Thank you for your order! Your delivery is expected on ${formattedDate}.`
+//   );
+// }
+
+// Call the function when needed, for example, on the "Buy Now" button click
+// document
+//   .getElementById("checkout-btn")
+//   .addEventListener("click", displayThankYouMessage);
 
 // function handlePaymentMethodChange() {
 //   const paymentMethodValue = document.getElementById("payment-method").value;
