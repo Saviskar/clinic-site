@@ -87,3 +87,10 @@ h1 {
   font-size: 14px;
   margin-top: 5px;
 }
+
+table tr td:nth-child(5) {
+  display: none;
+}
+table tr th:nth-child(5) {
+  display: none;
+}

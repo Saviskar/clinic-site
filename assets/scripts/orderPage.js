@@ -8,12 +8,13 @@ const checkoutBtn = document.getElementById("checkout-btn");
 const addFavBtn = document.getElementById("fav-btn");
 const applyFavBtn = document.getElementById("apply-fav-btn");
 const clearCartBtn = document.getElementById("clear-cart-btn");
+const medicineTable = document.getElementById("cart-body");
 
 // Initialize the application
 async function initializeApp() {
   try {
     const medicines = await fetchMedicineData();
-    loadCartFromStorage(); // Load cart items from local storage
+    // loadCartFromStorage(); // Load cart items from local storage
     createMedicineCards(medicines);
   } catch (error) {
     console.error("Failed to initialize application:", error);
@@ -64,7 +65,8 @@ function createMedicineCards(medicines) {
       const inputElement = document.createElement("input");
       inputElement.type = "number";
       inputElement.placeholder = "Enter quantity";
-      inputElement.min = "1";
+      inputElement.max = "200";
+      inputElement.value = "0";
 
       // Add to cart button
       const button = document.createElement("button");
@@ -85,10 +87,10 @@ function createMedicineCards(medicines) {
 }
 
 // Update the cart display
-function updateCart() {
-  const cartBody = document.getElementById("cart-body");
-  const netTotal = document.getElementById("net-total");
+const cartBody = document.getElementById("cart-body");
+const netTotal = document.getElementById("net-total");
 
+function updateCart() {
   cartBody.innerHTML = "";
   let total = 0;
 
@@ -137,8 +139,8 @@ function addToCart(medicine, quantity) {
   const itemId = medicine.name;
   const price = parseFloat(medicine.price);
 
-  if (!quantity || quantity <= 0) {
-    alert("Please enter a valid quantity.");
+  if (!quantity || quantity <= 0 || quantity > 200) {
+    alert("Please enter a quantity between 1 to 200.");
     return;
   }
 
@@ -196,12 +198,13 @@ function redirectToCheckout() {
 }
 
 // Clear the cart
-function clearCart(showAlert = false) {
-  Object.keys(selectedItems).forEach((itemId) => delete selectedItems[itemId]); // clear selected items
+function clearCart(showAlert = false, total) {
+  // Object.keys(selectedItems).forEach((itemId) => delete selectedItems[itemId]);
 
-  localStorage.removeItem("favorites");
+  medicineTable.innerHTML = "";
 
-  updateCart();
+  total = 0;
+  netTotal.innerHTML = `LKR ${total}`;
 
   if (showAlert) {
     alert("Cart cleared successfully!");
@@ -221,10 +224,8 @@ function clearCart(showAlert = false) {
 
 // Event listeners for buttons
 checkoutBtn.addEventListener("click", () => {
-  // validateCheckout();
   saveCartToBuyNowStorage();
   redirectCartEmpty();
-  // window.location.href = "checkoutPage.html";
 });
 clearCartBtn.addEventListener("click", () => clearCart(true));
 applyFavBtn.addEventListener("click", loadCartFromStorage);
