@@ -175,7 +175,6 @@ function addToCart(medicine, quantity) {
 function addItem(itemId) {
   if (selectedItems[itemId]) {
     selectedItems[itemId].quantity++;
-    // saveCartToStorage(); // Save updated cart to local storage
     updateCart();
   }
 }
@@ -187,7 +186,6 @@ function removeItem(itemId) {
     if (selectedItems[itemId].quantity <= 0) {
       delete selectedItems[itemId];
     }
-    // saveCartToStorage(); // Save updated cart to local storage
     updateCart();
   }
 }
@@ -219,8 +217,6 @@ function redirectToCheckout() {
 
 // Clear the cart
 function clearCart(showAlert = false, total) {
-  // Object.keys(selectedItems).forEach((itemId) => delete selectedItems[itemId]);
-
   medicineTable.innerHTML = "";
 
   total = 0;
