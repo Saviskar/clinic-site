@@ -155,20 +155,6 @@ tr:hover {
   padding-bottom: 2em;
 }
 
-/* General Button Styles */
-button {
-  display: inline-block;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  outline: none; /* Remove default focus outline */
-}
-
 /* Specific Button Classes */
 .submit-order.checkout-btn {
   background-color: #007bff;
@@ -199,12 +185,81 @@ button {
   box-shadow: 0 0 5px #007bff; /* Subtle blue glow */
 }
 
-/* Ensure Layout Consistency */
-button {
-  margin: 10px; /* Add spacing between buttons */
-}
-
 .delete-btn {
   background-color: #c90909; /* Even darker blue */
   transform: scale(0.95);
+}
+
+/* General Button Alignment */
+/* General Button Alignment */
+button {
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none; /* Remove default focus outline */
+  margin: 10px 5px; /* Add spacing between buttons */
+}
+
+/* Container for Buttons */
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end; /* Align buttons to the right by default */
+  gap: 10px; /* Spacing between buttons */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+/* Responsive Behavior for Mobile View */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    gap: 15px; /* Increase spacing between stacked buttons */
+  }
+}
+
+/* Specific Button Classes */
+.submit-order.checkout-btn {
+  background-color: #007bff;
+}
+
+.favorites-btn {
+  background-color: #28a745; /* Green for favorite button */
+}
+
+.delete-btn {
+  background-color: #c90909; /* Red for delete button */
+}
+
+/* Hover Effects */
+button:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.submit-order.checkout-btn:hover {
+  background-color: #0056b3; /* Darker blue for checkout */
+}
+
+.favorites-btn:hover {
+  background-color: #218838; /* Darker green for favorite */
+}
+
+.delete-btn:hover {
+  background-color: #a30808; /* Darker red */
+}
+
+/* Active (Click) Effects */
+button:active {
+  transform: scale(0.95); /* Shrink on click */
+}
+
+/* Focus (Keyboard Navigation) Effects */
+button:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow */
 }
