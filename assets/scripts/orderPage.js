@@ -50,6 +50,7 @@ function createMedicineCards(medicines) {
 
       // Medicine image
       const image = document.createElement("img");
+      image.alt = "Respective medicine image";
       image.classList.add("medicine-image");
       image.src = medicine.image;
 
