@@ -67,10 +67,6 @@ function validateForm() {
     isValid = false;
   }
 
-  // if payment method === cash on delivery just redirect to pharmacy page
-  // if payment method === card payment validate card details and then redirect
-  // card number validation
-
   if (paymentMethod.value === "card-payment") {
     if (
       cardNumber === "" ||
