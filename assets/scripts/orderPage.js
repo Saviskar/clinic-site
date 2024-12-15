@@ -67,6 +67,7 @@ function createMedicineCards(medicines) {
       const inputElement = document.createElement("input");
       const inputElementLabel = document.createElement("label");
       inputElementLabel.htmlFor = "quantity";
+      inputElementLabel.textContent = "Quantity";
       inputElement.type = "number";
       inputElement.placeholder = "Enter quantity";
       inputElement.max = "200";
