@@ -64,6 +64,8 @@ function createMedicineCards(medicines) {
 
       // Quantity input
       const inputElement = document.createElement("input");
+      const inputElementLabel = document.createElement("label");
+      inputElementLabel.htmlFor = "quantity";
       inputElement.type = "number";
       inputElement.placeholder = "Enter quantity";
       inputElement.max = "200";
@@ -78,7 +80,14 @@ function createMedicineCards(medicines) {
       );
 
       // Append elements to card
-      medicineCard.append(image, medicineTitle, price, inputElement, button);
+      medicineCard.append(
+        image,
+        medicineTitle,
+        price,
+        inputElementLabel,
+        inputElement,
+        button
+      );
       categoryContainer.appendChild(medicineCard);
     });
 
