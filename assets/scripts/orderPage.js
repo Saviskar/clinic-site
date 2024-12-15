@@ -1,8 +1,10 @@
+// Initializing the app freshly
 document.addEventListener("DOMContentLoaded", () => {
   initializeApp();
   clearCart();
 });
 
+// Grabbing necessary elements
 const selectedItems = {};
 const checkoutBtn = document.getElementById("checkout-btn");
 const addFavBtn = document.getElementById("fav-btn");
@@ -65,9 +67,9 @@ function createMedicineCards(medicines) {
 
       // Quantity input
       const inputElement = document.createElement("input");
-      const inputElementLabel = document.createElement("label");
-      inputElementLabel.htmlFor = "quantity";
-      inputElementLabel.textContent = "Quantity";
+      // const inputElementLabel = document.createElement("label");
+      // inputElementLabel.htmlFor = "quantity";
+      // inputElementLabel.textContent = "Quantity";
       inputElement.type = "number";
       inputElement.placeholder = "Enter quantity";
       inputElement.max = "200";
@@ -82,14 +84,7 @@ function createMedicineCards(medicines) {
       );
 
       // Append elements to card
-      medicineCard.append(
-        image,
-        medicineTitle,
-        price,
-        inputElementLabel,
-        inputElement,
-        button
-      );
+      medicineCard.append(image, medicineTitle, price, inputElement, button);
       categoryContainer.appendChild(medicineCard);
     });
 
