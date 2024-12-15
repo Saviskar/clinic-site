@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   clearCart();
 });
 
-const selectedItems = {}; // To track selected medicines
+const selectedItems = {};
 const checkoutBtn = document.getElementById("checkout-btn");
 const addFavBtn = document.getElementById("fav-btn");
 const applyFavBtn = document.getElementById("apply-fav-btn");
@@ -14,7 +14,6 @@ const medicineTable = document.getElementById("cart-body");
 async function initializeApp() {
   try {
     const medicines = await fetchMedicineData();
-    // loadCartFromStorage(); // Load cart items from local storage
     createMedicineCards(medicines);
   } catch (error) {
     console.error("Failed to initialize application:", error);
