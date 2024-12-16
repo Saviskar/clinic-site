@@ -203,7 +203,15 @@ function deleteItem(itemId) {
 
 // Save cart to local storage
 function saveCartToStorage() {
-  localStorage.setItem("favorites", JSON.stringify(selectedItems));
+  if (Object.keys(selectedItems).length === 0) {
+    alert(`
+      Nothing in the cart to add to favorites!
+      Please add an item to the cart to add to favorties.
+      `);
+    return;
+  } else {
+    localStorage.setItem("favorites", JSON.stringify(selectedItems));
+  }
 }
 
 // Load cart from local storage
@@ -239,7 +247,19 @@ checkoutBtn.addEventListener("click", () => {
 });
 clearCartBtn.addEventListener("click", () => clearCart(true));
 applyFavBtn.addEventListener("click", loadCartFromStorage);
-addFavBtn.addEventListener("click", saveCartToStorage);
+addFavBtn.addEventListener("click", () => {
+  saveCartToStorage();
+  // validateAddToFavs();
+});
+
+// function validateAddToFavs(){
+//   if (Object.keys(selectedItems).length === 0){
+//     alert(`
+//       Your cart is empty!
+//       Add items to cart to save cart to favorites.
+//       `)
+//   }
+// }
 
 function saveCartToBuyNowStorage() {
   const cartContainerContent =
